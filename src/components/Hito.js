@@ -28,39 +28,9 @@ function Hito({pos,src,year,text}) {
         hovered={hovered}
         onMouseEnter={_ => setHovered(true)} 
         onMouseLeave={_ => setHovered(false)}
-    />
+      />
     </Container>
   )
 }
 
 export default Hito
-
-// const createHitoImage = (src) =>{
-//   return (
-//     <div className="hitoImageWrapper">
-//     <img src={src} className="hitoImage" />
-//     </div>
-//   )
-// }
-
-// const hitos = hitosData
-//   .map(hito=>{
-//     return {
-//       left:hito.left ,
-//       top:(hito.top)+1080/3,
-//       direction:hito.direction,
-//       src: hito.src
-//     }
-//   }).map(h =>{
-//     var lineStyle = {
-//         marginTop: h.direction === "up" ? -60 : -220
-//       }
-//     return (
-//       <div style={h} className="hito">
-//       {createPoint("hitoCircle")()}
-//       {createLine("hitoLine")(lineStyle)}
-//       {createHitoImage(h.src)}
-//       </div>
-//     )
-//   })
-
