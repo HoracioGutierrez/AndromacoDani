@@ -1,4 +1,3 @@
-import React from 'react'
 import styled, {css} from 'styled-components'
 import hitoLine from '../assets/img/hito_line.png'
 
@@ -10,7 +9,7 @@ const HitoLine = styled.div`
   left:25%;
   transition:transform 0.5s;
 ${props => props.hovered && css`
-    transform:scaleY(1.2) translateY(-5px);
+    transform:scaleY(1.4) translateY(-8px);
   `} 
 `
 

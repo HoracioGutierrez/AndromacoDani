@@ -4,16 +4,17 @@ const hitos = [
   {
     pos: {
       x: "80px",
-      y: "calc(var(--main-height)/3)"
+      y: "calc(var(--main-height)/2.3)"
     },
     "direction": "down",
     "src": hito_1,
-    "year": "1926"
+    "year": "1926",
+    "text": "Lanzamiento de Glefina"
   },
   {
     pos: {
       x: "280px",
-      y: "calc(var(--main-height)/5)"
+      y: "calc(var(--main-height)/3.4)"
     },
     "src": hito_2,
     "direction": "down",
