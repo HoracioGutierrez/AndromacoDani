@@ -16,10 +16,6 @@ const Time = styled.div`
   }
 }
 
-& svg {
-  filter:blur(0.5);
-}
-
 & path {
   --anim-time: 5s;
   counter-increment: my-counter;
