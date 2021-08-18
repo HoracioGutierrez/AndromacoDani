@@ -16,6 +16,10 @@ const Time = styled.div`
   }
 }
 
+& svg {
+  filter:blur(0.5);
+}
+
 & path {
   --anim-time: 5s;
   counter-increment: my-counter;
@@ -45,6 +49,7 @@ function SvgTimeline(props) {
       height="1em"
       {...props}
     >
+
       <style>
         {
           ".timeline_svg__st0{fill:none;stroke:#fff;stroke-width:.6867;stroke-miterlimit:10}"

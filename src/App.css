@@ -60,6 +60,7 @@ header {
   /* margin:calc(-5vh) auto auto calc(-72vw); */ 
   margin-top: auto; 
   margin-left:-5%; 
+  filter:drop-shadow(3px 1px 4px #c2c2d3);
 }
 
 
