@@ -34,11 +34,12 @@ function Points(){
   return (
     <div id="points">
     {[...Array(20)].map((_,idx)=>{
-      return <BigPoint 
-        className="bigPoint" 
-        key={idx} 
-        seed={Math.random() * 50 + 30}
-        />
+      return null
+      // return <BigPoint 
+      //   className="bigPoint" 
+      //   key={idx} 
+      //   seed={Math.random() * 50 + 30}
+      //   />
     })}
     {[...Array(200)].map((_,idx)=>{
       return <SmallPoint key={idx} className="smallPoint" />
