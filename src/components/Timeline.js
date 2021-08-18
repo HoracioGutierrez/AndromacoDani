@@ -20,7 +20,8 @@ const Time = styled.div`
   counter-increment: my-counter;
   animation-name: timelineAnim;
   animation-duration: 5s;
-  animation-delay: calc(var(--animation-order) * 100ms);
+  //animation-delay: calc(var(--animation-order) * 100ms);
+  animation-delay: calc(var(--animation-order) * calc(5s/66));
   animation-fill-mode: both;
   animation-timing-function: ease-in-out;
   animation-iteration-count:infinite;
