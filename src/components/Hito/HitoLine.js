@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components'
-import hitoLine from '../assets/img/hito_line.png'
+import hitoLine from '../../assets/img/hito_line.png'
 
 const HitoLine = styled.div`
   position:relative;

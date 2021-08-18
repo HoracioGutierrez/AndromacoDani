@@ -1,10 +1,10 @@
 import {useState,React} from 'react'
 import styled from 'styled-components'
-import HitoImage from './HitoImage.js'
-import HitoLine from './HitoLine.js'
-import HitoYear from './HitoYear.js'
-import HitoCircle from './HitoCircle.js'
-import HitoText from './HitoText.js'
+import HitoImage from './Hito/HitoImage.js'
+import HitoLine from './Hito/HitoLine.js'
+import HitoYear from './Hito/HitoYear.js'
+import HitoCircle from './Hito/HitoCircle.js'
+import HitoText from './Hito/HitoText.js'
 
 const Container = styled.div`
 position:absolute;

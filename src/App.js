@@ -3,6 +3,7 @@ import './App.css';
 import  SvgTimeline from './components/Timeline.js'
 import Points from './components/Points.js'
 import Hito from './components/Hito.js'
+import Side from './components/SideBar.js'
 //assets
 import logoMain from  './assets/img/logo_main.png'
 import logoRight from  './assets/img/logo_2.png'
@@ -23,6 +24,7 @@ function App() {
       </header>
       <main>
         <Points />
+        <Side />
         <div id="timelineContainer">
           <div id="hitos">
             {hitosData.map(({pos,src,year,text},idx) => {

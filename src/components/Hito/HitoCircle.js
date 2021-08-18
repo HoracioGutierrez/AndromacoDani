@@ -1,4 +1,4 @@
-import hitoCircle from '../assets/img/hito_circle.png'
+import hitoCircle from '../../assets/img/hito_circle.png'
 import styled, {css} from 'styled-components'
 
 const HitoCircle = styled.div`
