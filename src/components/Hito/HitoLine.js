@@ -5,11 +5,17 @@ const HitoLine = styled.div`
   position:relative;
   background-repeat: no-repeat;
   background-image:url(${hitoLine});
-  height:30%;
-  left:25%;
+  height:20%;
+  left:13%;
   transition:transform 0.5s;
-${props => props.hovered && css`
-    transform:scaleY(1.4) translateY(-8px);
+
+${props => props.direction == "down" && css`top:35%;`}
+${props => (props.hovered && props.direction == "up") && css`
+    transform:scaleY(1.6) translateY(-7px);
+  `} 
+
+${props => (props.hovered && props.direction == "down") && css`
+    transform:scaleY(1.6) translateY(7px);
   `} 
 `
 

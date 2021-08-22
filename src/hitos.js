@@ -3,10 +3,10 @@ import hito_2 from "./assets/img/hitos/1941/img01.jpg"
 const hitos = [
   {
     pos: {
-      x: "80px",
-      y: "calc(var(--main-height)/2.3)"
+      x: "20px",
+      y: "25%"
     },
-    "direction": "down",
+    "direction": "up",
     "src": hito_1,
     "year": "1926",
     "text": "Lanzamiento de Glefina"
@@ -14,7 +14,7 @@ const hitos = [
   {
     pos: {
       x: "280px",
-      y: "calc(var(--main-height)/3.4)"
+      y: "40%"
     },
     "src": hito_2,
     "direction": "down",

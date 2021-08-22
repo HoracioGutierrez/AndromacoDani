@@ -5,8 +5,8 @@ const Text = styled.p`
   text-align:center;
   color:white;
   z-index:1;
-  top:-200px;
-  left:-32px;
+  top:-70%;
+  left:-70%;
   transition:transform 0.1s ease-in-out 0.2s;
   transform:scaleX(0);
 ${props => props.hovered && css`

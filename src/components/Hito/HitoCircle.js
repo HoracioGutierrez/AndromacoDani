@@ -4,8 +4,10 @@ import styled, {css} from 'styled-components'
 const HitoCircle = styled.div`
   background-repeat: no-repeat;
   background-image:url(${hitoCircle});
-  height:52px;
-  width:52px;
+  background-size:cover;
+  object-fit:contain;
+  height:30px;
+  width:30px;
   position:relative;
   z-index:10;
   transition:filter 0.3s ease-in;

@@ -13,8 +13,8 @@ align-items:center;
 justify-content:space-between;
 position:fixed;
 right:20px;
-top:12%;
-font-size:0.5rem;
+top:15%;
+font-size:0.1rem;
 z-index:10;
 `
 const Year = styled.a`

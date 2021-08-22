@@ -4,15 +4,16 @@ import styled, {css} from 'styled-components'
 const ImageWrap = styled.div`
 position:relative;
 height: 30%;
-left:-12%;
-top:-10%;
+left:-10%;
+top:${props => props.direction === "up" ? "10%" : "85%"};
 z-index:2;
 `
 
 const Image = styled.div`
 background-image:url(${props => props.src});
-width: 80%;
-padding-top: 80%;
+background-size:cover;
+width: 50%;
+padding-top: 50%;
 height: 0;
 background-size: cover;
 background-position-x: center;
@@ -20,14 +21,14 @@ background-position-y: 30%;
 border-radius: 50%;
 transition:transform 0.3s ease-in;
 ${props => props.hovered && css`
-    transform:scale(1.5) translateY(-50px);
+    transform:scale(1.5) translateY(${props.direction === "up" ? "-100%" : "90%"});
   `} 
 `
 
-function HitoImage({src, hovered}) {
+function HitoImage({src, hovered,direction}) {
   return (
-    <ImageWrap>
-    <Image src={src} hovered={hovered} />
+    <ImageWrap direction={direction}>
+    <Image src={src} hovered={hovered} direction={direction} />
     </ImageWrap>
   )
 }

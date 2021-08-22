@@ -11,31 +11,53 @@ import mouse from './assets/img/mouse.png'
 //data
 import hitosData from './hitos.js'
 
+//scroll
+import easyScroll from 'easy-scroll';
+
 function App() {
 
+  const move = ev =>{
+    // if(ev.buttons === 1){
+    //   window.scrollBy(-ev.movementX/5.0,0)
+    // }
+    if(ev.buttons === 1){
+      easyScroll({
+        scrollableDomEle: window,
+        direction: -ev.movementX > 0 ? "right" : "left",
+        duration: 1000,
+        easingPreset: 'easeInOutQuad',
+        onRefUpdateCallback: () => console.log('update!'),
+        scrollAmount:500
+      });
+    }
+  }
+
   return (
-    <div className="App">
-      <header>
-        <img id='logoMain' src={logoMain} alt="Logo de Andrómaco"/>
-        <div id='title'>
-        Descubrí <strong>nuestra historia</strong>
-        </div>
-        <img id='logoRight' src={logoRight} alt="Logo alternativo de Andrómaco"/>
-      </header>
-      <main>
-        <Points />
-        <Side />
-        <div id="timelineContainer">
-          <div id="hitos">
-            {hitosData.map(({pos,src,year,text},idx) => {
-              return <Hito key={idx} pos={pos} src={src} year={year} text={text} />
-            })}
-          </div>
-          <div id="grid"></div>
-          <SvgTimeline/>
-        </div>
-        <img id="mouse" src={mouse} alt="Imagen de mouse para indicar navegación horizontal" />
-      </main>
+    <div 
+    className="App"
+    onMouseMove={move}
+    >
+    <header>
+    <img id='logoMain' src={logoMain} alt="Logo de Andrómaco"/>
+    <div id='title'>
+    Descubrí <strong>nuestra historia</strong>
+    </div>
+    <img id='logoRight' src={logoRight} alt="Logo alternativo de Andrómaco"/>
+    </header>
+    <main>
+    {/*<Points />*/}
+    <Side />
+    <div id="timelineContainer">
+    <div id="hitos">
+    {hitosData.map(({pos,src,year,text,direction},idx) => {
+      return <Hito key={idx} pos={pos} src={src} year={year} text={text} direction={direction} />
+    })}
+    </div>
+    <SvgTimeline/>
+    <div id="grid"></div>
+    </div>
+    <img id="mouse" src={mouse} alt="Imagen de mouse para indicar navegación horizontal" />
+    </main>
     </div>
   );
 }

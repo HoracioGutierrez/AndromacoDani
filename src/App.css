@@ -1,4 +1,3 @@
-
 :root {
   --main-width:3792.7px;
   --main-height:1080px;
@@ -13,87 +12,55 @@
 }
 
 body {
-  height:100vh; 
-  overflow-y:hidden;
+  min-height:100vh; 
+  overflow:hidden;
   font-family:'Poppins';
 }
 
 .App {
-  text-align: center;
-  background:radial-gradient(var(--main-bg-2), var(--main-bg-1));
+  display:flex;
+  flex-direction:column;
   width: calc(var(--main-width)*1.1);
   height:100vh; 
+  text-align: center;
+  background:radial-gradient(var(--main-bg-2), var(--main-bg-1)); 
 }
 
 header {
-  position:fixed;
+  position:sticky;
+  left:0;
+  width:100vw;
+  flex:1;
   display: flex;
   flex-direction: row;
-  width:100vw;
-  height:8%;
-  min-height: 5%; 
   background-color: white;
   align-items: center;
   justify-content: space-between;
   font-size: calc(2px + 2vmin);
 }
 
-#title {
+header #title {
   color:var(--font-fg);
 }
 
-#logoMain{
+header #logoMain{
   display:flex;
   flex-direction:row;
-  margin-left:1%;
+  padding:0.5%;
 }
 
-#logoRight {
+header #logoRight {
   height: 5vh;
   padding-right:20px;
 }
 
-
-#timeline {
-  width: var(--main-width); 
-  height:1080px;
-  /* margin:calc(-5vh) auto auto calc(-72vw); */ 
-  margin-top: auto; 
-  margin-left:-5%; 
-  filter:drop-shadow(3px 1px 4px #c2c2d3);
+main {
+  flex:8;
+  width: calc(var(--main-width)*1.1); 
 }
 
-
-
-
-#grid {
-  width: calc(var(--main-width)*0.45); 
-  height:calc(1080px/2);
-  position:fixed;
-  top: calc(var(--main-height)*0.25);/*25vh; */
-  left:calc(var(--main-width)*0.0125); 
-  background-size:100px 100px;
-  background-position:0px -10px;
-  background-image: repeating-linear-gradient(0deg, transparent, transparent 99px, #ccc 99px, #ccc 120px), 
-                    repeating-linear-gradient(90deg, transparent, transparent 99px, #ccc 99px, #ccc 100px); 
-  opacity:0.6;
-  z-index:0;
-}
-
-.point {
-  position:fixed;
-  background-repeat: no-repeat;
-  width:var(--main-width);
-  padding-top:var(--main-height);
-}
-.bigPoint{
-  background-image:url(assets/img/circle_back.png);
-  background-size: contain;
-}
-
-.smallPoint{
-  background-image:url(assets/img/bg_dot.png);
-  background-size: scale;
+#parralax{
+  perspective:1px;
 }
 
 #mouse {
@@ -101,6 +68,36 @@ header {
   left:50%;
   bottom:3%;
 }
+
+#timelineContainer{
+  margin-left:2.5%;
+  margin-top:1.5%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+#hitos {
+  height:360px;
+  position:absolute;
+  width:var(--main-width);
+}
+
+
+#grid {
+  position:fixed;
+  width:100vw;
+  height:400px;
+  margin-top:-48px;
+  background-size:50px 50px;
+  background-position:0px -10px;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 49px, #ccc 49px, #ccc 120px), 
+                    repeating-linear-gradient(90deg, transparent, transparent 49px, #ccc 49px, #ccc 100px); 
+  opacity:0.6;
+  z-index:0;
+}
+
 
 
 

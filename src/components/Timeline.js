@@ -2,6 +2,12 @@ import * as React from "react";
 import styled from 'styled-components'
 
 const Time = styled.div`
+& svg {
+  display:block;
+  width:var(--main-width);
+
+}
+
 @keyframes timelineAnim { 
   0% {
     transform:translateY(0px);
@@ -35,14 +41,9 @@ function SvgTimeline(props) {
   return (
     <Time>
     <svg
-      id="timeline"
       xmlns="http://www.w3.org/2000/svg"
-      x={0}
-      y={0}
-      viewBox="0 0 3792.7 1080"
+      viewBox="0 420 3792.7 360"
       xmlSpace="preserve"
-      width="1em"
-      height="1em"
       {...props}
     >
 

@@ -14,16 +14,17 @@ left:${props => props.pos.x};
 top:${props => props.pos.y};
 `
 
-function Hito({pos,src,year,text}) {
+function Hito({pos,direction,src,year,text}) {
+
 
   const [hovered,setHovered] = useState(false)
 
   return (
     <Container pos={pos} >
-      <HitoText text={text} hovered={hovered} />
-      <HitoImage hovered={hovered} src={src} />
-      <HitoYear year={year} hovered={hovered} />
-      <HitoLine hovered={hovered} />
+      <HitoText text={text} hovered={hovered} direction={direction} />
+      <HitoImage hovered={hovered} src={src} direction={direction} />
+      <HitoYear year={year} hovered={hovered} direction={direction} />
+      <HitoLine hovered={hovered} direction={direction} />
       <HitoCircle 
         hovered={hovered}
         onMouseEnter={_ => setHovered(true)} 
