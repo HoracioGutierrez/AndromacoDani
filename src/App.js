@@ -28,19 +28,20 @@ function App() {
     let dir = ""
 
     if(ev.buttons === 1 && !wheel){
-      dir = -ev.movement > 0 ? "right" : "left"
+      dir = -ev.movementX > 0 ? "right" : "left"
     }else{
       dir = scrollUp(ev) ? "left" : "right"
     }
 
-    easyScroll({
-      scrollableDomEle: window,
-      direction: dir,
-      duration: 1000,
-      easingPreset: 'easeInOutQuad',
-      onRefUpdateCallback: () => console.log('update!'),
-      scrollAmount:500
-    });
+    if(ev.buttons === 1 || wheel){
+      easyScroll({
+        scrollableDomEle: window,
+        direction: dir,
+        duration: 1000,
+        easingPreset: 'easeInOutQuad',
+        scrollAmount:500
+      });
+    }
 
   }
 
@@ -51,27 +52,27 @@ function App() {
     onMouseMove={move(false)}
     onWheel={move(true)}
     >
-    <header>
-    <img id='logoMain' src={logoMain} alt="Logo de Andrómaco"/>
-    <div id='title'>
-    Descubrí <strong>nuestra historia</strong>
-    </div>
-    <img id='logoRight' src={logoRight} alt="Logo alternativo de Andrómaco"/>
-    </header>
-    <main>
-    {/*<Points />*/}
-    <Side />
-    <div id="timelineContainer">
-    <div id="hitos">
-    {hitosData.map(({pos,src,year,text,direction},idx) => {
-      return <Hito key={idx} pos={pos} src={src} year={year} text={text} direction={direction} />
-    })}
-    </div>
-    <SvgTimeline/>
-    <div id="grid"></div>
-    </div>
-    <img id="mouse" src={mouse} alt="Imagen de mouse para indicar navegación horizontal" />
-    </main>
+      <header>
+        <img id='logoMain' src={logoMain} alt="Logo de Andrómaco"/>
+        <div id='title'>
+          Descubrí <strong>nuestra historia</strong>
+        </div>
+        <img id='logoRight' src={logoRight} alt="Logo alternativo de Andrómaco"/>
+      </header>
+      <main>
+      {/*<Points />*/}
+        <Side />
+        <div id="timelineContainer">
+          <div id="hitos">
+            {hitosData.map(({pos,src,year,text,direction},idx) => {
+              return <Hito key={idx} pos={pos} src={src} year={year} text={text} direction={direction} />
+            })}
+          </div>
+          <SvgTimeline/>
+          <div id="grid"></div>
+        </div>
+        <img id="mouse" src={mouse} alt="Imagen de mouse para indicar navegación horizontal" />
+      </main>
     </div>
   );
 }
