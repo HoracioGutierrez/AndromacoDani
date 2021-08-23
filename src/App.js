@@ -16,26 +16,40 @@ import easyScroll from 'easy-scroll';
 
 function App() {
 
-  const move = ev =>{
-    // if(ev.buttons === 1){
-    //   window.scrollBy(-ev.movementX/5.0,0)
-    // }
-    if(ev.buttons === 1){
-      easyScroll({
-        scrollableDomEle: window,
-        direction: -ev.movementX > 0 ? "right" : "left",
-        duration: 1000,
-        easingPreset: 'easeInOutQuad',
-        onRefUpdateCallback: () => console.log('update!'),
-        scrollAmount:500
-      });
+  const scrollUp = ev => {
+    if (ev.wheelDelta) {
+      return ev.wheelDelta > 0;
     }
+    return ev.deltaY < 0;
   }
+
+  const move = (wheel) => ev =>{
+
+    let dir = ""
+
+    if(ev.buttons === 1 && !wheel){
+      dir = -ev.movement > 0 ? "right" : "left"
+    }else{
+      dir = scrollUp(ev) ? "left" : "right"
+    }
+
+    easyScroll({
+      scrollableDomEle: window,
+      direction: dir,
+      duration: 1000,
+      easingPreset: 'easeInOutQuad',
+      onRefUpdateCallback: () => console.log('update!'),
+      scrollAmount:500
+    });
+
+  }
+
 
   return (
     <div 
     className="App"
-    onMouseMove={move}
+    onMouseMove={move(false)}
+    onWheel={move(true)}
     >
     <header>
     <img id='logoMain' src={logoMain} alt="Logo de Andrómaco"/>
