@@ -19,9 +19,11 @@ background-size: cover;
 background-position-x: center;
 background-position-y: 30%;
 border-radius: 50%;
-transition:transform 0.3s ease-in;
+transition:all 0.3s ease-in;
+transition-property:transform,box-shadow;
 ${props => props.hovered && css`
     transform:scale(1.5) translateY(${props.direction === "up" ? "-100%" : "90%"});
+    box-shadow:1px 1px 4px #00FFFF;
   `} 
 `
 
