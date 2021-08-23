@@ -5,7 +5,7 @@ const Time = styled.div`
 & svg {
   display:block;
   width:var(--main-width);
-
+  filter:drop-shadow(3px 1px 4px #c2c2d3);
 }
 
 @keyframes timelineAnim { 

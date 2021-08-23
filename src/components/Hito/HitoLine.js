@@ -9,12 +9,12 @@ const HitoLine = styled.div`
   left:13%;
   transition:transform 0.5s;
 
-${props => props.direction == "down" && css`top:35%;`}
-${props => (props.hovered && props.direction == "up") && css`
+${props => props.direction === "down" && css`top:35%;`}
+${props => (props.hovered && props.direction === "up") && css`
     transform:scaleY(1.6) translateY(-7px);
   `} 
 
-${props => (props.hovered && props.direction == "down") && css`
+${props => (props.hovered && props.direction === "down") && css`
     transform:scaleY(1.6) translateY(7px);
   `} 
 `
