@@ -49,7 +49,7 @@ function SvgTimeline(props) {
 
       <style>
         {
-          ".timeline_svg__st0{fill:none;stroke:#fff;stroke-width:.6867;stroke-miterlimit:10}"
+          ".timeline_svg__st0{fill:none;stroke:#00ffff;stroke-width:.6867;stroke-miterlimit:10}"
         }
       </style>
       <path

@@ -12,6 +12,7 @@ width:100px;
 height:200px;
 left:${props => props.pos.x};
 top:${props => props.pos.y};
+z-index:3;
 `
 
 function Hito({pos,direction,src,year,text}) {
