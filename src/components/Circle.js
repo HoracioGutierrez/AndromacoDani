@@ -11,7 +11,8 @@ const Circle = styled.div`
   background-image:url(${tex});
   background-size:cover;
   object-fit:contain;
-  opacity:${props => Math.random()+0.1};
+  opacity:${_ => Math.random()+0.1};
+  z-index:0;
 `
 
 export default Circle 

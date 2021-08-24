@@ -9,6 +9,7 @@ const Textura = styled.div`
   background-image:url(${tex});
   background-size:contain;
   opacity:0.3;
+  z-index:0;
 `
 
 export default Textura

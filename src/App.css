@@ -70,6 +70,15 @@ main {
 
 }
 
+.layerBack {
+  position:absolute;
+  z-index:-1;
+}
+
+.layerFront {
+  z-index:2;
+}
+
 #hitos {
   height:360px;
   position:absolute;
@@ -86,6 +95,8 @@ main {
 #grid {
   /* top:45%; */
   /* position:fixed; */
+  position:absolute;
+  z-index:-1;
   width:100vw;
   height:400px;
   /* margin-top:-48px; */

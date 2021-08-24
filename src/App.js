@@ -67,12 +67,10 @@ function App() {
       <main>   
         {/* Container */}
         <Parallax horizontal={true} pages={1.4} ref={ref} id="para">
-            {/* Stars */}
-            <ParallaxLayer speed={0.00002}><Points/></ParallaxLayer>
             {/* Timeline */}
-            <ParallaxLayer speed={2} id="timelineContainer">
+            <ParallaxLayer class="layerFront" speed={2} id="timelineContainer">
               {/* Hitos */}
-              <div id="hitos">
+              <div class="layerFront" id="hitos">
                 {hitosData.map(({pos,src,year,text,direction},idx) => {
                   return (<Hito 
                             key={idx} 
@@ -86,24 +84,26 @@ function App() {
               <SvgTimeline/>
             </ParallaxLayer>
             {/* Grid */}
-            <ParallaxLayer style={{zIndex:-1}}speed={0.002} factor={0.0005}>
+            <ParallaxLayer style={{zIndex:0}}speed={0.002} factor={0.0005}>
               <div id="grid"></div>
             </ParallaxLayer>
+            {/* Stars */}
+            <ParallaxLayer class="layerBack" speed={0.00002}><Points/></ParallaxLayer>
             {/* Grid Blob */}
-            <ParallaxLayer speed={0.002} offset={0.8} factor={0.5}>
+            <ParallaxLayer class="layerBack" style={{zIndex:0}} speed={0.002} offset={0.8} factor={0.5}>
               <Textura top={25}/>
             </ParallaxLayer>
-            <ParallaxLayer speed={0.2} offset={0.3} factor={0.1}>
+            <ParallaxLayer class="layerBack" style={{zIndex:0}} speed={0.2} offset={0.3} factor={0.1}>
               <Textura top={-60} />
             </ParallaxLayer>
             {/* Blurred Circles */}
-            <ParallaxLayer speed={0.2} offset={0.0} factor={0.05}>
+            <ParallaxLayer class="layerBack" style={{zIndex:0}} speed={0.2} offset={0.0} factor={0.05}>
                 <Circle x={1} y={48}/>
             </ParallaxLayer>
-            <ParallaxLayer speed={0.002}  factor={0.3}>
+            <ParallaxLayer class="layerBack" style={{zIndex:0}} speed={0.002}  factor={0.3}>
                 <Circle x={20} y={-40}/>
             </ParallaxLayer>
-            <ParallaxLayer speed={0.002}  offset={1.2} factor={0.3}>
+            <ParallaxLayer class="layerBack" style={{zIndex:0}} speed={0.002}  offset={1.2} factor={0.3}>
                 <Circle x={-40} y={-30}/>
             </ParallaxLayer>
         </Parallax>
