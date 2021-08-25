@@ -6,21 +6,23 @@ const yearRanges = ["1926-1935", "1936-1945", "1946-1955", "1956-1965",
                     "2006-2015", "2016-2021"]
 
 const Sidebar = styled.div`
-background-color: #ffffff91;
-padding: 10px;
+position:fixed;
 width:120px;
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:space-between;
-position:fixed;
+padding:10px;
 right:20px;
 top:15%;
 z-index:0;
+background-color: #ffffff91;
 `
 const Year = styled.a`
 width:110px;
-font-family:monospaced;
+font-family:'Poppins';
+text-align:center;
+/*padding-left:10px;*/
 text-decoration:none;
 underline:none;
 color: #003462;
