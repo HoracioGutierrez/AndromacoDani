@@ -16,7 +16,7 @@ justify-content:space-between;
 position:fixed;
 right:20px;
 top:15%;
-z-index:10;
+z-index:0;
 `
 const Year = styled.a`
 width:110px;

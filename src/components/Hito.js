@@ -1,4 +1,5 @@
-import {useState,React} from 'react'
+import {useState,useContext,React} from 'react'
+import OverlayContext from '.././OverlayContext.js'
 import styled from 'styled-components'
 import HitoImage from './Hito/HitoImage.js'
 import HitoLine from './Hito/HitoLine.js'
@@ -17,7 +18,7 @@ z-index:3;
 
 function Hito({pos,direction,src,year,text}) {
 
-
+  const {setShow} = useContext(OverlayContext)
   const [hovered,setHovered] = useState(false)
 
   return (
@@ -30,6 +31,7 @@ function Hito({pos,direction,src,year,text}) {
         hovered={hovered}
         onMouseEnter={_ => setHovered(true)} 
         onMouseLeave={_ => setHovered(false)}
+        onClick={_ => {setShow(true)}}
       />
     </Container>
   )
