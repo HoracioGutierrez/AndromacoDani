@@ -18,19 +18,22 @@ background-color: #00000075;
 color:white;
 z-index:100;
 
-.overlayInfo{
+.overlayInfo {
   display:flex;
   flex-direction:row;
+  height:80vh;
 }
 
 .banda {
+  height:1vh;
   background-repeat:no-repeat;
   background-position:center;
+  background-size:scale-down;
 }
 
 .head {
   background-image: url(${overlayHead});
-  padding-bottom:7%;
+  padding-bottom:6%;
 }
 
 .head::before {
@@ -45,7 +48,7 @@ z-index:100;
 
 .foot {
   background-image: url(${overlayFoot});
-  padding-top:7%;
+  padding-top:6%;
 }
 
 .overlayText {
@@ -74,7 +77,29 @@ p {
   line-height:2rem;
   font-size:1.3rem;
   height:60vh;
+  scrollbar-color:red;
 
+}
+
+/* scrollbar */
+
+p::-webkit-scrollbar {
+width:8px;
+background-color:rgba(1,1,1,0.1);
+}
+
+p::-webkit-scrollbar-thumb {
+width:8px;
+background-color:rgba(1,1,1,0.4);
+border-radius:10px;
+}
+
+p::-webkit-scrollbar-thumb:hover {
+background-color:rgba(1,1,1,0.6);
+}
+
+p::-webkit-scrollbar-track {
+border-radius:10px;
 }
 
 button {
@@ -86,6 +111,7 @@ button {
   font-size:3rem;
   font-weight:light;
   top:3%;
+  cursor:pointer;
   /*filter:drop-shadow(1px 1px 1px #00FFFF);*/
 }
 `
