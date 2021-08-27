@@ -29,6 +29,7 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 
 function App() {
   const [show,setShow] = useState(false)
+  const [content, setContent] = useState({})
   const [muted,setMuted] = useState(true)
 
   const ref = useRef()
@@ -88,15 +89,19 @@ function App() {
             <ParallaxLayer className="layerFront" speed={2} id="timelineContainer">
               {/* Hitos */}
               <div className="layerFront" id="hitos">
-                {hitosData.map(({pos,src,year,text,direction},idx) => {
-                  return ( <OverlayContext.Provider value={{show,setShow}}>
+                {hitosData.map(({pos,direction,imgSmall,imgBig,year,title,text},idx) => {
+                  return ( <OverlayContext.Provider value={{show,setShow, setContent}}>
                           <Hito 
                             key={idx} 
+                            idx={idx}
                             pos={pos} 
-                            src={src} 
+                            direction={direction} 
+                            imgSmall={imgSmall} 
+                            imgBig={imgBig}
                             year={year} 
-                            text={text} 
-                            direction={direction} />
+                            title={title} 
+                            text={text}
+                            />
                             </OverlayContext.Provider>)})}
               </div>
               {/* Svg */}
@@ -129,7 +134,7 @@ function App() {
         <Side />
         <img id="mouse" src={mouse} alt="Imagen de mouse para indicar navegación horizontal" />
 
-        <OverlayContext.Provider value={{show,setShow}}>
+        <OverlayContext.Provider value={{show,setShow, content}}>
           <HitoOverlay />
         </OverlayContext.Provider>
         <ReactAudioPlayer loop controls autoPlay volume={0.5} muted={muted} src={music}/>

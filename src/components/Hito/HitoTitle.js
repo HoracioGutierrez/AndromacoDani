@@ -14,8 +14,8 @@ ${props => props.hovered && css`
   `} 
 `
 
-function HitoText({text,hovered}) {
-  return <Text hovered={hovered} >{text}</Text>
+function HitoTitle({title,hovered}) {
+  return <Text hovered={hovered} >{title}</Text>
 }
 
-export default HitoText
+export default HitoTitle

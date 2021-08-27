@@ -5,7 +5,7 @@ import HitoImage from './Hito/HitoImage.js'
 import HitoLine from './Hito/HitoLine.js'
 import HitoYear from './Hito/HitoYear.js'
 import HitoCircle from './Hito/HitoCircle.js'
-import HitoText from './Hito/HitoText.js'
+import HitoTitle from './Hito/HitoTitle.js'
 
 const Container = styled.div`
 position:absolute;
@@ -16,22 +16,26 @@ top:${props => props.pos.y};
 z-index:3;
 `
 
-function Hito({pos,direction,src,year,text}) {
+function Hito({idx, pos,direction,imgSmall, imgBig, year, title, text}) {
 
   const {setShow} = useContext(OverlayContext)
+  const {setContent} = useContext(OverlayContext)
   const [hovered,setHovered] = useState(false)
 
   return (
     <Container pos={pos} >
-      <HitoText text={text} hovered={hovered} direction={direction} />
-      <HitoImage hovered={hovered} src={src} direction={direction} />
+      <HitoTitle title={title} hovered={hovered} direction={direction} />
+      <HitoImage hovered={hovered} src={imgSmall} direction={direction} />
       <HitoYear year={year} hovered={hovered} direction={direction} />
       <HitoLine hovered={hovered} direction={direction} />
       <HitoCircle 
         hovered={hovered}
         onMouseEnter={_ => setHovered(true)} 
         onMouseLeave={_ => setHovered(false)}
-        onClick={_ => {setShow(true)}}
+        onClick={_ => {
+          setShow(true)
+          setContent({title:title, text:text, img:imgBig})
+        }}
       />
     </Container>
   )
