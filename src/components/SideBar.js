@@ -26,7 +26,7 @@ text-align:center;
 text-decoration:none;
 underline:none;
 color: #003462;
-font-size:0.5rem;
+font-size:0.7vw;
 
 &::before {
   width:110px;
