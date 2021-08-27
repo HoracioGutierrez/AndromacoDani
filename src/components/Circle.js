@@ -9,7 +9,7 @@ const Circle = styled.div`
   left:${props => props.x}vw;
   background-repeat: no-repeat;
   background-image:url(${tex});
-  background-size:cover;
+  background-size:contain;
   object-fit:contain;
   opacity:${_ => Math.random()+0.1};
   z-index:0;
