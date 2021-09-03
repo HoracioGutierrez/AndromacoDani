@@ -31,6 +31,7 @@ function App() {
   const [show,setShow] = useState(false)
   const [content, setContent] = useState({})
   const [muted,setMuted] = useState(true)
+  const [manuallyMuted,setManuallyMuted] = useState(false)
 
   const ref = useRef()
 
@@ -43,9 +44,8 @@ function App() {
 
   const move = (wheel) => ev =>{
 
-
     if(ev.buttons === 1){
-      if(muted)setMuted(false)
+      if(muted && !manuallyMuted)setMuted(false)
     }
 
     let dir = ""
@@ -132,7 +132,10 @@ function App() {
             </ParallaxLayer>
         </Parallax>
         <Side />
-        <img id="mouse" src={mouse} alt="Imagen de mouse para indicar navegación horizontal" />
+        <div id="mouse">
+          <p>Arrastrá o scrolleá para conocer nuestra historía</p>
+          <img src={mouse} alt="Imagen de mouse para indicar navegación horizontal" />
+        </div>
 
         <OverlayContext.Provider value={{show,setShow, content}}>
           <HitoOverlay />
@@ -140,7 +143,10 @@ function App() {
         <ReactAudioPlayer loop controls autoPlay volume={0.5} muted={muted} src={music}/>
         <button 
           id="mute"
-          onClick={_=> setMuted(!muted)}
+          onClick={_=> {
+            setMuted(!muted)
+            setManuallyMuted(true)
+          }}
         >
         {muted ?  "🔇" : "🔈"}
         </button>

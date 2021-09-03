@@ -88,9 +88,30 @@ main {
 }
 
 #mouse {
+  display:flex;
+  flex-direction:column;
   position:fixed;
-  left:50%;
+  height:10vh;
+  left:40%;
   bottom:3%;
+}
+
+#mouse p {
+  text-align:center;
+  color:white;
+  opacity:1.0;
+  animation:hide 4s ease-in-out forwards;
+  animation-delay:2s;
+}
+
+@keyframes hide {
+  to {
+    opacity:0.0;
+  }
+}
+
+#mouse img {
+  object-fit:scale-down;
 }
 
 #grid {
