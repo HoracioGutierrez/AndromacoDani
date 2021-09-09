@@ -16,7 +16,7 @@ padding:10px;
 right:20px;
 top:15%;
 z-index:0;
-background-color: #ffffff91;
+/*background-color: #ffffff91;*/
 `
 const Year = styled.a`
 width:110px;
@@ -25,7 +25,7 @@ text-align:center;
 /*padding-left:10px;*/
 text-decoration:none;
 underline:none;
-color: #003462;
+color:#093255;
 font-size:0.7vw;
 
 &::before {

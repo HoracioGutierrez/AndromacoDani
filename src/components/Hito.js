@@ -6,6 +6,7 @@ import HitoLine from './Hito/HitoLine.js'
 import HitoYear from './Hito/HitoYear.js'
 import HitoCircle from './Hito/HitoCircle.js'
 import HitoTitle from './Hito/HitoTitle.js'
+import overlayHead from '../assets/img/overlayHead.png'
 
 const Container = styled.div`
 position:absolute;
@@ -25,7 +26,7 @@ function Hito({idx, pos,direction,imgSmall, imgsBig, year, title, text}) {
   return (
     <Container pos={pos} >
       <HitoTitle title={title} hovered={hovered} direction={direction} />
-      <HitoImage hovered={hovered} src={imgSmall} direction={direction} />
+      <HitoImage hovered={hovered} src={imgSmall || overlayHead } direction={direction} />
       <HitoYear year={year} hovered={hovered} direction={direction} />
       <HitoLine hovered={hovered} direction={direction} />
       <HitoCircle 
@@ -34,7 +35,7 @@ function Hito({idx, pos,direction,imgSmall, imgsBig, year, title, text}) {
         onMouseLeave={_ => setHovered(false)}
         onClick={_ => {
           setShow(true)
-          setContent({title:title, text:text, imgs:imgsBig})
+          setContent({title:year, text:text, imgs:imgsBig})
         }}
       />
     </Container>

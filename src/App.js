@@ -39,7 +39,6 @@ function App() {
   useEffect(() =>{
     (async function(){
       const hitos = await hitosBuilder()
-      console.log("H", hitos)
       setHitosData(hitos.filter(obj => Object.keys(obj).length !== 0))
     })()
   }, [])

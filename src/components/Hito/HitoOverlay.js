@@ -34,8 +34,8 @@ padding:24px;
 
 .head {
   background-image: url(${overlayHead});
-  padding-bottom:6%;
-  height:4vh;
+ /* padding-bottom:6%;*/
+  height:10vh;
 }
 
 .head::before {
@@ -51,19 +51,19 @@ padding:24px;
 .foot {
   background-image: url(${overlayFoot});
   padding-top:4%;
-  bottom:12px;
+  height:10vh;
 }
 
 .overlayText {
-  flex:65%;
-  
+  width:80vw;
+  text-aligh:justify;
+  white-space:pre-line;
 }
 
 img {
-  flex:35%;
+  width:40vw;
   object-fit: scale-down;
-  height:60vh;
-  margin-top:5%;
+  margin-top:3%;
 }
 
 

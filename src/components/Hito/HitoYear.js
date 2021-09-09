@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components'
 
 const Year = styled.p`
   position:absolute;
-  text-align:center;
+  text-align:left;
   color:white;
   z-index:1;
   left:-1%;
@@ -23,7 +23,7 @@ ${props => props.hovered && css`
   `} 
  `
 function HitoYear({year,hovered,direction}) {
-  return <Year hovered={hovered} direction={direction} >{year}</Year> 
+  return <Year hovered={hovered} direction={direction} >{year.split("-")[0]}</Year> 
 }
 
 export default HitoYear 
