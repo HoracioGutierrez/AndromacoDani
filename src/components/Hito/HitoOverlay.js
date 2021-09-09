@@ -51,6 +51,7 @@ padding:24px;
 .foot {
   background-image: url(${overlayFoot});
   padding-top:4%;
+  bottom:12px;
 }
 
 .overlayText {
@@ -120,7 +121,8 @@ button {
 
 const HitoOverlay = () =>{
   const {show,setShow, content} = useContext(OverlayContext)
-  const {text,title,imgs} = content
+  const {text,title} = content
+  const imgs = content.imgs || []
 
   return (
     <Overlay show={show}>

@@ -36,10 +36,12 @@ function App() {
   const [manuallyMuted,setManuallyMuted] = useState(false)
   const [hitosData,setHitosData] = useState([])
 
-  useEffect(async () =>{
-    const hitos = await hitosBuilder()
-    console.log(hitos)
-    setHitosData(hitos.filter(obj => Object.keys(obj).length !== 0))
+  useEffect(() =>{
+    (async function(){
+      const hitos = await hitosBuilder()
+      console.log("H", hitos)
+      setHitosData(hitos.filter(obj => Object.keys(obj).length !== 0))
+    })()
   }, [])
 
   const ref = useRef()
