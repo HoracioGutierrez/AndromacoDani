@@ -55,13 +55,15 @@ padding:24px;
 }
 
 .overlayText {
-  width:80vw;
-  text-aligh:justify;
+  /*width:80vw;*/
+  flex:80%;
+  text-align:center;
   white-space:pre-line;
 }
 
 img {
-  width:40vw;
+  /*width:40vw;*/
+  flex:30%;
   object-fit: scale-down;
   margin-top:3%;
 }
@@ -69,6 +71,7 @@ img {
 
 h2 {
   font-size:2rem;
+  text-align:center;
 }
 
 p {
@@ -76,7 +79,7 @@ p {
   width:80%;
   margin:0 auto;
   padding-right:20px;
-  text-align:justify;
+  text-align:center;
   line-height:2rem;
   font-size:1.3rem;
   height:60vh;
@@ -131,7 +134,9 @@ const HitoOverlay = () =>{
           <button onClick={_=> {setShow(false)}}>X</button>
         </div>
         <div className="overlayInfo">
-          <img src={imgs[0]} />
+        {imgs[0]
+          ? <img src={imgs[0]} />
+          : <></>}
           <div className="overlayText">
             <h2>{title}</h2>
             <p>{text}</p>
