@@ -17,6 +17,7 @@ height:100vh;
 background-color: #00000075;
 color:white;
 z-index:100;
+padding:24px;
 
 .overlayInfo {
   display:flex;
@@ -25,7 +26,7 @@ z-index:100;
 }
 
 .banda {
-  height:1vh;
+  height:2vh;
   background-repeat:no-repeat;
   background-position:center;
   background-size:scale-down;
@@ -34,6 +35,7 @@ z-index:100;
 .head {
   background-image: url(${overlayHead});
   padding-bottom:6%;
+  height:4vh;
 }
 
 .head::before {
@@ -48,7 +50,7 @@ z-index:100;
 
 .foot {
   background-image: url(${overlayFoot});
-  padding-top:6%;
+  padding-top:4%;
 }
 
 .overlayText {
@@ -69,7 +71,7 @@ h2 {
 }
 
 p {
-  overflow-y:scroll;
+  /*overflow-y:scroll;*/
   width:80%;
   margin:0 auto;
   padding-right:20px;
@@ -118,7 +120,7 @@ button {
 
 const HitoOverlay = () =>{
   const {show,setShow, content} = useContext(OverlayContext)
-  const {text,title,img} = content
+  const {text,title,imgs} = content
 
   return (
     <Overlay show={show}>
@@ -127,7 +129,7 @@ const HitoOverlay = () =>{
           <button onClick={_=> {setShow(false)}}>X</button>
         </div>
         <div className="overlayInfo">
-          <img src={img} />
+          <img src={imgs[0]} />
           <div className="overlayText">
             <h2>{title}</h2>
             <p>{text}</p>

@@ -1,4 +1,4 @@
-import {useRef,useState} from 'react'
+import {useRef,useState,useEffect} from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import './App.css';
 
@@ -21,17 +21,26 @@ import mouse from './assets/img/mouse.png'
 import music from './assets/music.mp3'
 
 //data
-import hitosData from './hitos.js'
+import hitosBuilder from './hitos.js'
+
 
 //scroll
 import easyScroll from 'easy-scroll';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
+
 
 function App() {
   const [show,setShow] = useState(false)
   const [content, setContent] = useState({})
   const [muted,setMuted] = useState(true)
   const [manuallyMuted,setManuallyMuted] = useState(false)
+  const [hitosData,setHitosData] = useState([])
+
+  useEffect(async () =>{
+    const hitos = await hitosBuilder()
+    console.log(hitos)
+    setHitosData(hitos.filter(obj => Object.keys(obj).length !== 0))
+  }, [])
 
   const ref = useRef()
 
@@ -89,7 +98,7 @@ function App() {
             <ParallaxLayer className="layerFront" speed={2} id="timelineContainer">
               {/* Hitos */}
               <div className="layerFront" id="hitos">
-                {hitosData.map(({pos,direction,imgSmall,imgBig,year,title,text},idx) => {
+                {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,imgsBig,year,title,text},idx) => {
                   return ( <OverlayContext.Provider value={{show,setShow, setContent}}>
                           <Hito 
                             key={idx} 
@@ -97,12 +106,12 @@ function App() {
                             pos={pos} 
                             direction={direction} 
                             imgSmall={imgSmall} 
-                            imgBig={imgBig}
+                            imgsBig={imgsBig}
                             year={year} 
                             title={title} 
                             text={text}
                             />
-                            </OverlayContext.Provider>)})}
+                            </OverlayContext.Provider>)}) : <></>}
               </div>
               {/* Svg */}
               <SvgTimeline/>

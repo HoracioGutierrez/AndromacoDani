@@ -16,11 +16,11 @@ top:${props => props.pos.y};
 z-index:3;
 `
 
-function Hito({idx, pos,direction,imgSmall, imgBig, year, title, text}) {
-
+function Hito({idx, pos,direction,imgSmall, imgsBig, year, title, text}) {
   const {setShow} = useContext(OverlayContext)
   const {setContent} = useContext(OverlayContext)
   const [hovered,setHovered] = useState(false)
+  pos = pos || {x: 0, y:0}
 
   return (
     <Container pos={pos} >
@@ -34,7 +34,7 @@ function Hito({idx, pos,direction,imgSmall, imgBig, year, title, text}) {
         onMouseLeave={_ => setHovered(false)}
         onClick={_ => {
           setShow(true)
-          setContent({title:title, text:text, img:imgBig})
+          setContent({title:title, text:text, imgs:imgsBig})
         }}
       />
     </Container>
