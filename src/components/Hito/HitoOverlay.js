@@ -17,25 +17,25 @@ height:100vh;
 background-color: #00000075;
 color:white;
 z-index:100;
-padding:24px;
 
 .overlayInfo {
   display:flex;
   flex-direction:row;
   height:80vh;
+  flex:40%;
+  padding:0 24px 0 24px;
 }
 
 .banda {
-  height:2vh;
   background-repeat:no-repeat;
   background-position:center;
-  background-size:scale-down;
+  background-size:scale;
+  flex:20%;
 }
 
 .head {
   background-image: url(${overlayHead});
- /* padding-bottom:6%;*/
-  height:10vh;
+  padding-top:20px;
 }
 
 .head::before {
@@ -50,22 +50,21 @@ padding:24px;
 
 .foot {
   background-image: url(${overlayFoot});
-  padding-top:4%;
-  height:10vh;
 }
 
 .overlayText {
   /*width:80vw;*/
-  flex:80%;
+  flex:50%;
   text-align:center;
   white-space:pre-line;
 }
 
 img {
   /*width:40vw;*/
-  flex:30%;
+  flex:50%;
   object-fit: scale-down;
   margin-top:3%;
+  width:100%;
 }
 
 
@@ -129,8 +128,8 @@ const HitoOverlay = () =>{
 
   return (
     <Overlay show={show}>
+        <div className="banda head"></div>
         <div class="header">
-          <div className="banda head"></div>
           <button onClick={_=> {setShow(false)}}>X</button>
         </div>
         <div className="overlayInfo">
