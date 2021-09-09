@@ -14,71 +14,64 @@ const hitos = [
   },
   {
     pos: {
-      x: "120px",
-      y: "00%"
+      x: "170px",
+      y: "-12%"
     },
     "direction": "up",
   },
   {
     pos: {
-      x: "180px",
+      x: "280px",
       y: "44%"
     },
     "direction": "down",
   },
   {
     pos: {
-      x: "240px",
+      x: "400px",
       y: "-22%"
     },
     "direction": "up",
   },
   {
     pos: {
-      x: "360px",
-      y: "-26%"
-    },
-    "direction": "up",
-  },
-  {
-    pos: {
-      x: "400px",
-      y: "19%"
-    },
-    "direction": "down",
-  },
-  {
-    pos: {
-      x: "460px",
-      y: "-13%"
-    },
-    "direction": "up",
-  },
-  {
-    pos: {
-      x: "540px",
+      x: "560px",
       y: "2%"
     },
     "direction": "up",
   },
   {
     pos: {
-      x: "620px",
-      y: "0%"
-    },
-    "direction": "up",
-  },
-  {
-    pos: {
-      x: "690px",
-      y: "34%"
+      x: "670px",
+      y: "29%"
     },
     "direction": "down",
   },
   {
     pos: {
-      x: "740px",
-      y: "30%"
+      x: "830px",
+      y: "7%"
+    },
+    "direction": "up",
+  },
+  {
+    pos: {
+      x: "1000px",
+      y: "-13%"
+    },
+    "direction": "up",
+  },
+  {
+    pos: {
+      x: "1220px",
+      y: "3%"
+    },
+    "direction": "up",
+  },
+  {
+    pos: {
+      x: "1360px",
+      y: "34%"
     },
     "direction": "down",
   }
