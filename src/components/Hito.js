@@ -19,14 +19,23 @@ z-index:3;
 
 function Hito({idx, pos,direction,imgSmall, imgsBig, year, title, text}) {
   const {setShow} = useContext(OverlayContext)
-  const {setContent} = useContext(OverlayContext)
+  const {setHitosOverlayDataIdx} = useContext(OverlayContext)
   const [hovered,setHovered] = useState(false)
   pos = pos || {x: 0, y:0}
 
   return (
     <Container pos={pos} >
       <HitoTitle title={title} hovered={hovered} direction={direction} />
-      <HitoImage hovered={hovered} src={imgSmall || overlayHead } direction={direction} />
+      <HitoImage 
+        onClick={_ => {
+          console.log("HOLI")
+          setShow(true)
+          setHitosOverlayDataIdx(idx)
+          }}
+        hovered={hovered}
+        src={imgSmall || overlayHead } 
+        direction={direction} 
+      />
       <HitoYear year={year} hovered={hovered} direction={direction} />
       <HitoLine hovered={hovered} direction={direction} />
       <HitoCircle 
@@ -35,7 +44,7 @@ function Hito({idx, pos,direction,imgSmall, imgsBig, year, title, text}) {
         onMouseLeave={_ => setHovered(false)}
         onClick={_ => {
           setShow(true)
-          setContent({title:year, text:text, imgs:imgsBig})
+          setHitosOverlayDataIdx(idx)
         }}
       />
     </Container>

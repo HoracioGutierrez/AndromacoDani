@@ -7,6 +7,7 @@ height: 30%;
 left:-10%;
 top:${props => props.direction === "up" ? "10%" : "85%"};
 z-index:2;
+cursor:pointer;
 `
 
 const Image = styled.div`
@@ -30,7 +31,7 @@ ${props => props.hovered && css`
 function HitoImage({src, hovered,direction}) {
   return (
     <ImageWrap direction={direction}>
-    <Image src={src} hovered={hovered} direction={direction} />
+      <Image src={src} hovered={hovered} direction={direction} />
     </ImageWrap>
   )
 }

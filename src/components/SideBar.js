@@ -16,7 +16,8 @@ padding:10px;
 right:20px;
 top:15%;
 z-index:0;
-/*background-color: #ffffff91;*/
+background-color: #ffffff2e;
+border-radius:10px;
 `
 const Year = styled.a`
 width:110px;
@@ -27,6 +28,13 @@ text-decoration:none;
 underline:none;
 color:#093255;
 font-size:0.7vw;
+
+&:first-child{
+  animation:glow 1s ease-in-out;
+  animation-direction:fowards;
+  animation-iteration-count:20;
+  animation-play-state: running; 
+}
 
 &::before {
   width:110px;
@@ -39,6 +47,19 @@ font-size:0.7vw;
   margin-left:-24px;
   overflow:hidden;
   color:#00FFFF;
+}
+
+@keyframes glow {
+  0% {
+    color:#093255;
+  }
+  50% {
+    &::before {content:"⟶ |";}
+    color:#00FFFF;
+  }
+  100%{
+    color:#093255;
+  }
 }
 `
 

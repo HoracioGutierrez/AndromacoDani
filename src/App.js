@@ -31,17 +31,25 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 
 function App() {
   const [show,setShow] = useState(false)
-  const [content, setContent] = useState({})
+  const [hitosOverlayData, setHitosOverlayData] = useState([])
+  const [hitosOverlayDataIdx,setHitosOverlayDataIdx] = useState([])
+  const [hitosData,setHitosData] = useState([])
   const [muted,setMuted] = useState(true)
   const [manuallyMuted,setManuallyMuted] = useState(false)
-  const [hitosData,setHitosData] = useState([])
 
   useEffect(() =>{
     (async function(){
-      const hitos = await hitosBuilder()
-      setHitosData(hitos.filter(obj => Object.keys(obj).length !== 0))
+      if(hitosData.length === 0 || hitosOverlayData.length === 0){
+        const hitos = await hitosBuilder()
+        setHitosData(hitos.filter(obj => Object.keys(obj).length !== 0))
+        setHitosOverlayData(hitos
+          .filter(obj => Object.keys(obj).length !== 0)
+          .map(({year, imgsBig, text})=> {
+            return {year,imgsBig,text}
+          }))
+      }
     })()
-  }, [])
+  }, )
 
   const ref = useRef()
 
@@ -99,18 +107,16 @@ function App() {
             <ParallaxLayer className="layerFront" speed={2} id="timelineContainer">
               {/* Hitos */}
               <div className="layerFront" id="hitos">
-                {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,imgsBig,year,title,text},idx) => {
-                  return ( <OverlayContext.Provider value={{show,setShow, setContent}}>
+                {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,year,title},idx) => {
+                  return ( <OverlayContext.Provider value={{show,setShow, setHitosOverlayData, setHitosOverlayDataIdx}}>
                           <Hito 
                             key={idx} 
                             idx={idx}
                             pos={pos} 
                             direction={direction} 
                             imgSmall={imgSmall} 
-                            imgsBig={imgsBig}
                             year={year} 
                             title={title} 
-                            text={text}
                             />
                             </OverlayContext.Provider>)}) : <></>}
               </div>
@@ -147,7 +153,7 @@ function App() {
           <img src={mouse} alt="Imagen de mouse para indicar navegación horizontal" />
         </div>
 
-        <OverlayContext.Provider value={{show,setShow, content}}>
+        <OverlayContext.Provider value={{show,setShow, hitosOverlayData, hitosOverlayDataIdx, setHitosOverlayDataIdx}}>
           <HitoOverlay />
         </OverlayContext.Provider>
         <ReactAudioPlayer loop controls autoPlay volume={0.5} muted={muted} src={music}/>

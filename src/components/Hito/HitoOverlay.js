@@ -3,9 +3,17 @@ import {useContext} from 'react'
 import OverlayContext from '../.././OverlayContext.js'
 import overlayHead from '../../assets/img/overlayHead.png'
 import overlayFoot from '../../assets/img/logo_foot.png'
+import time_back from '../../assets/img/Time_Back.png'
+import time_next from '../../assets/img/Time_Next.png'
+
 
 
 const Overlay = styled.div`
+
+@font-face{
+  font-family:'Minion';
+  src:url(./assets/font/MinionPro.otf);
+}
 display: ${props =>  props.show ? "flex" : "none"};
 overflow:hidden;
 flex-direction:column;
@@ -14,7 +22,7 @@ top:0;
 left:0;
 width:100vw;
 height:100vh;
-background-color: #00000075;
+background-color: #000000b3;
 color:white;
 z-index:100;
 
@@ -23,6 +31,8 @@ z-index:100;
   flex-direction:row;
   height:80vh;
   flex:40%;
+  width:90%;
+  margin:0 auto;
   padding:0 24px 0 24px;
 }
 
@@ -52,33 +62,33 @@ z-index:100;
   background-image: url(${overlayFoot});
 }
 
+div.imgsContainer {
+  position:relative;
+  flex:50%;
+  margin:3% 24px 0 0;
+  width:100%;
+
+}
+
+
 .overlayText {
   /*width:80vw;*/
   flex:50%;
-  text-align:center;
   white-space:pre-line;
+  margin-right:20px;
+  font-family:Minion;
 }
-
-img {
-  /*width:40vw;*/
-  flex:50%;
-  object-fit: scale-down;
-  margin-top:3%;
-  width:100%;
-}
-
 
 h2 {
   font-size:2rem;
-  text-align:center;
+  text-align:left;
 }
 
 p {
   /*overflow-y:scroll;*/
-  width:80%;
   margin:0 auto;
   padding-right:20px;
-  text-align:center;
+  text-align:left;
   line-height:2rem;
   font-size:1.3rem;
   height:60vh;
@@ -107,7 +117,7 @@ p::-webkit-scrollbar-track {
 border-radius:10px;
 }
 
-button {
+button.exit {
   color:white;
   background:none;
   border:none;
@@ -119,27 +129,58 @@ button {
   cursor:pointer;
   /*filter:drop-shadow(1px 1px 1px #00FFFF);*/
 }
+
+button.arrow {
+  background:none;
+  border:none;
+  margin:60px;
+  cursor:pointer; 
+}
+`
+
+const OverlayImage = styled.img`
+  position:absolute;
+  object-fit: scale-down;
+  height:80%;
+  left:0;
+  transform-origin:center center;
+  transform:rotate(${props => props.seed }deg); /* translateX(${props => (Math.random() * 80) + 20}px);*/
+  box-shadow:2px 2px 10px black;
 `
 
 const HitoOverlay = () =>{
-  const {show,setShow, content} = useContext(OverlayContext)
-  const {text,title} = content
-  const imgs = content.imgs || []
+  const {show,setShow, hitosOverlayDataIdx, setHitosOverlayDataIdx, hitosOverlayData} = useContext(OverlayContext)
+  const {text,year,imgsBig} = hitosOverlayData[hitosOverlayDataIdx] || {}
+  const imgs = imgsBig || []
 
   return (
     <Overlay show={show}>
         <div className="banda head"></div>
         <div class="header">
-          <button onClick={_=> {setShow(false)}}>X</button>
+          <button className="exit" onClick={_=> {setShow(false)}}>X</button>
         </div>
         <div className="overlayInfo">
-        {imgs[0]
-          ? <img src={imgs[0]} />
-          : <></>}
+          <button className="arrow"  onClick={_=> {
+            const val = hitosOverlayDataIdx === 0 ? 0 : hitosOverlayDataIdx - 1 
+            setHitosOverlayDataIdx(val)
+          }}>
+          <img src={time_back}/>
+          </button>
+          {imgs[0]
+            ?  <div className="imgsContainer">{imgs.map((img,idx) => <OverlayImage src={img} seed={(Math.random() * 40 - 20) * idx}/>)}</div>
+            : <></>}
           <div className="overlayText">
-            <h2>{title}</h2>
+            <h2>{year}</h2>
             <p>{text}</p>
           </div>
+          <button className="arrow" onClick={ _ => {
+            const val = hitosOverlayDataIdx > hitosOverlayData.length - 1
+              ? hitosOverlayDataIdx 
+              : hitosOverlayDataIdx + 1 
+            setHitosOverlayDataIdx(val)
+          }}>
+           <img src={time_next} />
+          </button>
         </div>
         <div className="banda foot"></div>
     </Overlay>
