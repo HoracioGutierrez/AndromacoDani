@@ -13,6 +13,7 @@ const Circle = styled.div`
   object-fit:contain;
   opacity:${_ => Math.random()+0.1};
   z-index:0;
+  transition:opacity 0.5s ease-in-out;
 `
 
 export default Circle 

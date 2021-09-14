@@ -66,7 +66,7 @@ div.imgsContainer {
   position:relative;
   flex:50%;
   margin:3% 24px 0 0;
-  width:100%;
+  width:50%;
 
 }
 
@@ -141,10 +141,14 @@ button.arrow {
 const OverlayImage = styled.img`
   position:absolute;
   object-fit: scale-down;
-  height:80%;
+  height:45vh;
+  /*width:90%;*/
   left:0;
+  right:0;
+  margin-left: auto; 
+  margin-right: auto; 
   transform-origin:center center;
-  transform:rotate(${props => props.seed }deg); /* translateX(${props => (Math.random() * 80) + 20}px);*/
+  transform:rotate(${props => props.seed }deg) translateX(${props => props.seed * 1.5}px);
   box-shadow:2px 2px 10px black;
 `
 
@@ -167,7 +171,7 @@ const HitoOverlay = () =>{
           <img src={time_back}/>
           </button>
           {imgs[0]
-            ?  <div className="imgsContainer">{imgs.map((img,idx) => <OverlayImage src={img} seed={(Math.random() * 40 - 20) * idx}/>)}</div>
+            ?  <div className="imgsContainer">{imgs.filter(img => img).map((img,idx) => <OverlayImage src={img} seed={(Math.random() * 40 - 20) * idx}/>)}</div>
             : <></>}
           <div className="overlayText">
             <h2>{year}</h2>

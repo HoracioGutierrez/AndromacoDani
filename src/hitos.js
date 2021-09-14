@@ -14,66 +14,288 @@ const hitos = [
   },
   {
     pos: {
-      x: "170px",
-      y: "-12%"
+      x: "140px",
+      y: "-7%"
     },
     "direction": "up",
   },
   {
     pos: {
-      x: "280px",
+      x: "250px",
       y: "44%"
     },
     "direction": "down",
   },
   {
     pos: {
-      x: "400px",
-      y: "-22%"
+      x: "330px",
+      y: "-28%"
     },
     "direction": "up",
   },
   {
     pos: {
-      x: "560px",
+      x: "480px",
+      y: "-9%"
+    },
+    "direction": "up",
+  },
+  {
+    pos: {
+      x: "600px",
+      y: "17%"
+    },
+    "direction": "down",
+  },
+  {
+    pos: {
+      x: "750px",
       y: "2%"
     },
     "direction": "up",
   },
   {
     pos: {
-      x: "670px",
-      y: "29%"
+      x: "870px",
+      y: "10%"
+    },
+    "direction": "up",
+  },
+  {
+    pos: {
+      x: "940px",
+      y: "33%"
     },
     "direction": "down",
   },
   {
     pos: {
-      x: "830px",
-      y: "7%"
+      x: "1080px",
+      y: "-4%"
     },
     "direction": "up",
   },
   {
     pos: {
-      x: "1000px",
-      y: "-13%"
+      x: "1160px",
+      y: "46%"
+    },
+    "direction": "down",
+  },
+  {
+    pos: {
+      x: "1230px",
+      y: "4%"
     },
     "direction": "up",
   },
   {
     pos: {
-      x: "1220px",
-      y: "3%"
-    },
-    "direction": "up",
-  },
-  {
-    pos: {
-      x: "1360px",
+      x: "1350px",
       y: "34%"
     },
     "direction": "down",
+  },
+  {
+    pos: {
+      x: "1430px",
+      y: "-11%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "1500px",
+      y: "30%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "1570px",
+      y: "-26%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "1660px",
+      y: "42%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "1720px",
+      y: "-18%"
+    },
+    "direction": "up",
+  },
+  {
+    pos: {
+      x: "1800px",
+      y: "53%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "1880px",
+      y: "-8%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "1950px",
+      y: "44%"
+    },
+    "direction": "down",
+  },
+  {
+    pos: {
+      x: "2040px",
+      y: "-14%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "2100px",
+      y: "36%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "2180px",
+      y: "-20%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "2240px",
+      y: "30%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "2300px",
+      y: "-28%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "2380px",
+      y: "27%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "2420px",
+      y: "-24%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "2500px",
+      y: "42%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "2570px",
+      y: "8%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "2630px",
+      y: "36%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "2700px",
+      y: "7%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "2780px",
+      y: "27%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "2830px",
+      y: "8%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "2900px",
+      y: "34%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "2970px",
+      y: "4%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "3030px",
+      y: "48%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "3100px",
+      y: "6%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "3180px",
+      y: "30%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "3240px",
+      y: "-15%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "3300px",
+      y: "10%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "3370px",
+      y: "-3%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "3430px",
+      y: "15%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "3500px",
+      y: "-6%"
+    },
+    "direction": "up",
+  },{
+    pos: {
+      x: "3570px",
+      y: "26%"
+    },
+    "direction": "down",
+  },{
+    pos: {
+      x: "3672px",
+      y: "15%"
+    },
+    "direction": "up",
   }
 ]
 
@@ -113,11 +335,7 @@ const addPos = async (hito,idx) =>{
   hito.imgsBig = imgsBig
 
 
-  if(idx < 10){
-    return {...hito,...hitos[idx]}
-  }else{
-    return {}
-  }
+  return {...hito,...hitos[idx]}
 }
 
 const genObj = async () =>{
