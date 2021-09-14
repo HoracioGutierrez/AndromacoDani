@@ -39,17 +39,15 @@ function App() {
 
   useEffect(() =>{
     (async function(){
-     // if(hitosData.length === 0 || hitosOverlayData.length === 0){
+      if(hitosData.length === 0 || hitosOverlayData.length === 0){
         const hitos = await hitosBuilder()
         setHitosData(hitos.filter(obj => Object.keys(obj).length !== 0))
-      /*
         setHitosOverlayData(hitos
           .filter(obj => Object.keys(obj).length !== 0)
           .map(({year, imgsBig, text})=> {
             return {year,imgsBig,text}
           }))
-          */
-      //}
+      }
     })()
   },[])
 

@@ -85,7 +85,7 @@ h2 {
 }
 
 p {
-  /*overflow-y:scroll;*/
+  overflow-y:scroll;
   margin:0 auto;
   padding-right:20px;
   text-align:left;
