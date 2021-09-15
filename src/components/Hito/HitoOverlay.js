@@ -30,11 +30,11 @@ z-index:100;
 .overlayInfo {
   display:flex;
   flex-direction:row;
-  height:80vh;
+  height:60vh;
   flex:40%;
   width:90%;
   margin:0 auto;
-  padding:0 24px 0 24px;
+  padding:40px 24px 40px 24px;
 }
 
 .banda {
@@ -86,7 +86,7 @@ h2 {
 
 p {
   overflow-y:scroll;
-  margin:0 auto;
+  /*margin:0 auto;*/
   padding-right:20px;
   text-align:left;
   line-height:2rem;
