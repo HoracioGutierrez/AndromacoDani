@@ -27,12 +27,10 @@ function Hito({idx, pos,direction,imgSmall, imgsBig, year, title, text}) {
     <Container pos={pos} id={`hito_${idx}`}>
       <HitoTitle title={title} hovered={hovered} direction={direction} />
       <HitoImage 
-        onClick={_ => {
-          console.log("HOLI")
-          setShow(true)
-          setHitosOverlayDataIdx(idx)
-          }}
         hovered={hovered}
+        setShow={setShow}
+        idx={idx}
+        setHitosOverlayDataIdx={setHitosOverlayDataIdx}
         src={imgSmall || overlayHead } 
         direction={direction} 
       />

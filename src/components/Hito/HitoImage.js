@@ -28,9 +28,14 @@ ${props => props.hovered && css`
   `} 
 `
 
-function HitoImage({src, hovered,direction}) {
+function HitoImage({src, hovered,direction, setShow,idx,setHitosOverlayDataIdx}) {
   return (
-    <ImageWrap direction={direction}>
+    <ImageWrap 
+      onClick={_ => {
+        setShow(true)
+        setHitosOverlayDataIdx(idx)
+        }}
+      direction={direction}>
       <Image src={src} hovered={hovered} direction={direction} />
     </ImageWrap>
   )
