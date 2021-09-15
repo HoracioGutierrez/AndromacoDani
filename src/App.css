@@ -141,11 +141,24 @@ audio {
 #mute{
   position:absolute;
   bottom:10px;
-  left:10px;
+  left:20px;
   background:none;
   border:none;
   color:white;
   font-size:2rem;
+}
+
+.speaker {
+ /* object-fit:contain;*/
+  max-width:80%;
+  max-height:80%;
+  cursor:pointer;
+  transition:filter 1s ease-in-out;
+}
+
+.speaker.muted {
+  filter:blur(3px);
+  transition:filter 1s ease-in-out;
 }
 
 

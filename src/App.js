@@ -19,6 +19,7 @@ import logoMain from  './assets/img/logo_main.png'
 import logoRight from  './assets/img/logo_2.png'
 import mouse from './assets/img/mouse.png'
 import music from './assets/music.mp3'
+import speaker from './assets/img/speaker.png'
 
 //data
 import hitosBuilder from './hitos.js'
@@ -164,7 +165,8 @@ function App() {
             setManuallyMuted(true)
           }}
         >
-        {muted ?  "🔇" : "🔈"}
+        <img className={`speaker ${muted ? 'muted' : ''}`} src={speaker}/>
+        {/*muted ?  "🔇" : "🔈"*/}
         </button>
       </main>
     </div>
