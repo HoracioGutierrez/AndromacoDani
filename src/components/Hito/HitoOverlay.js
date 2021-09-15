@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 import {useContext} from 'react'
 import OverlayContext from '../.././OverlayContext.js'
-import overlayHead from '../../assets/img/overlayHead.png'
-import overlayFoot from '../../assets/img/logo_foot.png'
+import overlayHead from '../../assets/img/overlay_head.png'
+import overlayFoot from '../../assets/img/overlay_foot.png'
 import time_back from '../../assets/img/Time_Back.png'
 import time_next from '../../assets/img/Time_Next.png'
+import cross from '../../assets/img/Close.png'
 
 
 
@@ -22,7 +23,7 @@ top:0;
 left:0;
 width:100vw;
 height:100vh;
-background-color: #000000b3;
+background-color: #000000cc;
 color:white;
 z-index:100;
 
@@ -39,8 +40,10 @@ z-index:100;
 .banda {
   background-repeat:no-repeat;
   background-position:center;
-  background-size:scale;
+  background-size:contain;
   flex:20%;
+  width:80%;
+  margin:0 auto;
 }
 
 .head {
@@ -49,13 +52,6 @@ z-index:100;
 }
 
 .head::before {
-  content: "";
-  border:1px solid white;
-  position: fixed;
-  top:7vh;
-  width:80%;
-  left:10%;
-  z-index:-1;
 }
 
 .foot {
@@ -64,16 +60,20 @@ z-index:100;
 
 div.imgsContainer {
   position:relative;
-  flex:50%;
-  margin:3% 24px 0 0;
-  width:50%;
+  flex:60%;
+  /*margin:3% 24px 0 0;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
 }
 
 
 .overlayText {
-  /*width:80vw;*/
-  flex:50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex:40%;
   white-space:pre-line;
   margin-right:20px;
   font-family:Minion;
@@ -141,7 +141,9 @@ button.arrow {
 const OverlayImage = styled.img`
   position:absolute;
   object-fit: scale-down;
-  height:45vh;
+  max-width:80%;
+  max-height:100%;
+  /*height:45vh;*/
   /*width:90%;*/
   left:0;
   right:0;
@@ -161,7 +163,7 @@ const HitoOverlay = () =>{
     <Overlay show={show}>
         <div className="banda head"></div>
         <div class="header">
-          <button className="exit" onClick={_=> {setShow(false)}}>X</button>
+          <button className="exit" onClick={_=> {setShow(false)}}><img src={cross}/></button>
         </div>
         <div className="overlayInfo">
           <button className="arrow"  onClick={_=> {
@@ -171,7 +173,7 @@ const HitoOverlay = () =>{
           <img src={time_back}/>
           </button>
           {imgs[0]
-            ?  <div className="imgsContainer">{imgs.filter(img => img).map((img,idx) => <OverlayImage src={img} seed={(Math.random() * 40 - 20) * idx}/>)}</div>
+            ?  <div className="imgsContainer">{imgs.filter(img => img).map((img,idx) => <OverlayImage src={img} seed={(Math.random() * 30 - 15) * idx}/>)}</div>
             : <></>}
           <div className="overlayText">
             <h2>{year}</h2>

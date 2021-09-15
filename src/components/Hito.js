@@ -24,7 +24,7 @@ function Hito({idx, pos,direction,imgSmall, imgsBig, year, title, text}) {
   pos = pos || {x: 0, y:0}
 
   return (
-    <Container pos={pos} >
+    <Container pos={pos} id={`hito_${idx}`}>
       <HitoTitle title={title} hovered={hovered} direction={direction} />
       <HitoImage 
         onClick={_ => {

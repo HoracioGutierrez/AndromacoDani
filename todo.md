@@ -4,7 +4,6 @@
 
 Timeline
   * imagen clickeable (no se porque no anda :( )
-  * Agregar hitos faltantes
 
 Sidebar
-  * que se mueva en la timeline
+  * que se mueva en la timeline (esta medio roto :()

@@ -1,9 +1,12 @@
-
 import styled from 'styled-components'
+import React, { useState, useEffect } from 'react';
 
 const yearRanges = ["1926-1935", "1936-1945", "1946-1955", "1956-1965", 
                     "1966-1975", "1976-1985", "1986-1995", "1996-2005",
                     "2006-2015", "2016-2021"]
+
+const anchorsMap = [0,4,7,9,12,14,20,25,33,40]
+
 
 const Sidebar = styled.div`
 position:fixed;
@@ -19,7 +22,7 @@ z-index:0;
 background-color: #ffffff2e;
 border-radius:10px;
 `
-const Year = styled.a`
+const Y = styled.a`
 width:110px;
 font-family:'Poppins';
 text-align:center;
@@ -63,17 +66,51 @@ font-size:0.7vw;
 }
 `
 
+function Year({hitoIdx, year,scrollRoot}) {
+  const [anchor,setAnchor] = useState(null)
+
+  useEffect(() => {
+    setAnchor(document.getElementById(`hito_${hitoIdx}`))
+  })
+
+  const handleClick = ev => {
+    ev.preventDefault()
+    var headerOffset = 0
+    var elementPosition = anchor.getBoundingClientRect()
+    var offsetPosition = elementPosition.top - headerOffset
+    console.log(anchor.id)
+    console.log(elementPosition)
+    scrollRoot.scrollTo({
+      top:offsetPosition,
+      left:elementPosition.left,
+      behavior:'smooth'
+    })
+  }
+
+  return (
+    <Y
+    onClick={handleClick}
+    href={``}
+    >
+    {year}
+    </Y>
+  )
+}
+
 function Side(){
+
+  const paraContainer = document.querySelector('#para')
+
   return(
     <Sidebar>
       {yearRanges.map((y,idx) => {
         return (
           <Year 
           key={idx}
-          href="#"
-          >
-          {y}
-          </Year>
+          hitoIdx={anchorsMap[idx]}
+          year={y}
+          scrollRoot={paraContainer}
+          />
         )
       })}
     </Sidebar>
