@@ -16,8 +16,6 @@ import Navbar from './components/Navbar/Navbar'
 import OverlayContext from './OverlayContext.js'
 
 //assets
-import logoMain from  './assets/img/logo_main.png'
-import logoRight from  './assets/img/logo_2.png'
 import mouse from './assets/img/mouse.png'
 import music from './assets/music.mp3'
 import speaker from './assets/img/speaker.png'

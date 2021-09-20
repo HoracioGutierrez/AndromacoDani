@@ -1,8 +1,5 @@
-// import hito_1 from "./assets/img/hitos/1926/IMG01.jpg"
-// import hito_2 from "./assets/img/hitos/1941/img01.jpg"
 import h from "./assets/hitos.csv"
 import Papa from "papaparse"
-
 
 const hitos = [
   {
@@ -309,26 +306,8 @@ const fetchCSV =  async () => {
 }
 
 const addPos = async (hito,idx) =>{
-  let imgSmall;
-  let imgBig;
-
-  //load imgSmall
-  try {
-    imgSmall = await import(`./assets/img/hLow/${hito.year.replaceAll(" ","")}/${hito.hover}`)
-  }catch(e){
-    console.log("error cargando imagen", e)
-  }
-  hito.imgSmall = imgSmall?.default || ""
-
-  //load imgBig
-  try {
-    const pathStr = `./assets/img/hLow/collage/${hito.year.replaceAll(" ","")}.png`
-    imgBig = await import(pathStr)
-  }catch(e){
-    console.log("error cargando imagen", e)
-  }
-  hito.imgBig = imgBig
-
+  hito.imgSmall = `/assets/img/hover/${hito.year.replaceAll(" ","")}.png`
+  hito.imgBig = `/assets/img/over/${hito.year.replaceAll(" ","")}.png`
   return {...hito,...hitos[idx]}
 }
 

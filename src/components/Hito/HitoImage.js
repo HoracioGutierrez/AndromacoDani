@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, {css} from 'styled-components'
+import overlayHead from '../../assets/img/overlayHead.png'
 
 const ImageWrap = styled.div`
 position:relative;
@@ -11,7 +12,7 @@ cursor:pointer;
 `
 
 const Image = styled.div`
-background-image:url(${props => props.src});
+background-image:url(${props => props.src}), url(${overlayHead});
 background-size:cover;
 width: 50%;
 padding-top: 50%;

@@ -6,7 +6,6 @@ import HitoLine from './Hito/HitoLine.js'
 import HitoYear from './Hito/HitoYear.js'
 import HitoCircle from './Hito/HitoCircle.js'
 import HitoTitle from './Hito/HitoTitle.js'
-import overlayHead from '../assets/img/overlayHead.png'
 
 const Container = styled.div`
 position:absolute;
@@ -31,7 +30,7 @@ function Hito({idx, pos,direction,imgSmall, year, title}) {
         setShow={setShow}
         idx={idx}
         setHitosOverlayDataIdx={setHitosOverlayDataIdx}
-        src={imgSmall || overlayHead } 
+        src={imgSmall} 
         direction={direction} 
       />
       <HitoYear year={year} hovered={hovered} direction={direction} />

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {useContext} from 'react'
+import {useContext,useState,useEffect} from 'react'
 import OverlayContext from '../.././OverlayContext.js'
 import overlayHead from '../../assets/img/overlay_head.png'
 import overlayFoot from '../../assets/img/overlay_foot.png'
@@ -37,6 +37,7 @@ z-index:100;
   padding:40px 24px 40px 24px;
 }
 
+
 .banda {
   background-repeat:no-repeat;
   background-position:center;
@@ -58,16 +59,12 @@ z-index:100;
   background-image: url(${overlayFoot});
 }
 
-div.imgsContainer {
-  position:relative;
-  flex:60%;
-  /*margin:3% 24px 0 0;*/
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
+.overlayImage {
+  flex:40%;
+  padding-right:20px;
+  width:100%;
+  object-fit:scale-down;
 }
-
 
 .overlayText {
   display: flex;
@@ -138,28 +135,14 @@ button.arrow {
 }
 `
 
-const OverlayImage = styled.img`
-  position:absolute;
-  object-fit: scale-down;
-  max-width:80%;
-  max-height:100%;
-  /*height:45vh;*/
-  /*width:90%;*/
-  left:0;
-  right:0;
-  margin-left: auto; 
-  margin-right: auto; 
-  transform-origin:center center;
-  transform:rotate(${props => props.seed }deg) translateX(${props => props.seed * 1.5}px);
-  box-shadow:2px 2px 10px black;
-`
-
 const HitoOverlay = () =>{
   const {show,setShow, hitosOverlayDataIdx, setHitosOverlayDataIdx, hitosOverlayData} = useContext(OverlayContext)
   const {text,year,imgBig} = hitosOverlayData[hitosOverlayDataIdx] || {}
-  // console.log('idx', hitosOverlayDataIdx)
-  // console.log('data', hitosOverlayData)
-  // console.log('imgBIG', imgBig)
+  const [noImgIdxs,setNoImgIdxs] = useState([])
+
+  useEffect(() =>{
+    setNoImgIdxs(Array(hitosOverlayData.length).fill(true))
+  },[hitosOverlayData])
 
   return (
     <Overlay show={show}>
@@ -174,7 +157,13 @@ const HitoOverlay = () =>{
           }}>
           <img src={time_back}/>
           </button>
-          <img src={imgBig} />
+          {noImgIdxs[hitosOverlayDataIdx]
+            ? <img className="overlayImage" src={imgBig} onError={_ => {
+              const arr = [...noImgIdxs]
+              arr[hitosOverlayDataIdx] = false
+              setNoImgIdxs(arr)
+            }}  />
+            : <></>}
           <div className="overlayText">
             <h2>{year}</h2>
             <p>{text}</p>
