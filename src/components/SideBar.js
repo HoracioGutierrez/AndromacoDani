@@ -10,16 +10,18 @@ const anchorsMap = [0,4,7,9,12,14,20,25,33,40]
 
 const Sidebar = styled.div`
 position:fixed;
-width:120px;
+/*width:120px;*/
 display:flex;
-flex-direction:column;
+flex-direction:row;
 align-items:center;
 justify-content:space-between;
 padding:10px;
-right:20px;
+/*right:20px;*/
+left: 50%;
+transform: translateX(-50%);
 top:15%;
 z-index:0;
-background-color: #ffffff2e;
+background-color: #ffffff5e;
 border-radius:10px;
 `
 const Y = styled.a`
@@ -44,11 +46,13 @@ font-size:0.7vw;
 }
 
 &:hover {
+/*
   &::before {
     content:"⟶ |";
   }
   margin-left:-24px;
   overflow:hidden;
+  */
   color:#00FFFF;
 }
 

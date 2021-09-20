@@ -156,8 +156,10 @@ const OverlayImage = styled.img`
 
 const HitoOverlay = () =>{
   const {show,setShow, hitosOverlayDataIdx, setHitosOverlayDataIdx, hitosOverlayData} = useContext(OverlayContext)
-  const {text,year,imgsBig} = hitosOverlayData[hitosOverlayDataIdx] || {}
-  const imgs = imgsBig || []
+  const {text,year,imgBig} = hitosOverlayData[hitosOverlayDataIdx] || {}
+  // console.log('idx', hitosOverlayDataIdx)
+  // console.log('data', hitosOverlayData)
+  // console.log('imgBIG', imgBig)
 
   return (
     <Overlay show={show}>
@@ -172,9 +174,7 @@ const HitoOverlay = () =>{
           }}>
           <img src={time_back}/>
           </button>
-          {imgs[0]
-            ?  <div className="imgsContainer">{imgs.filter(img => img).map((img,idx) => <OverlayImage src={img} seed={(Math.random() * 30 - 15) * idx}/>)}</div>
-            : <></>}
+          <img src={imgBig} />
           <div className="overlayText">
             <h2>{year}</h2>
             <p>{text}</p>

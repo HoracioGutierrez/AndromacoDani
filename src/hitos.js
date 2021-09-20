@@ -310,7 +310,7 @@ const fetchCSV =  async () => {
 
 const addPos = async (hito,idx) =>{
   let imgSmall;
-  let imgsBig;
+  let imgBig;
 
   //load imgSmall
   try {
@@ -320,20 +320,14 @@ const addPos = async (hito,idx) =>{
   }
   hito.imgSmall = imgSmall?.default || ""
 
-  // load imgBig
-  imgsBig = await Promise.all(hito.fotos.split('\n')
-  .filter(async foto => foto)
-  .map(async f =>{
-    let asset
-    try{
-      asset = await import(`./assets/img/hLow/${hito.year.replaceAll(" ","")}/${f}`)
-    }catch(e){
-      console.log("error cargando imagen", e)
-    }
-    return asset?.default
-  }))
-  hito.imgsBig = imgsBig
-
+  //load imgBig
+  try {
+    const pathStr = `./assets/img/hLow/collage/${hito.year.replaceAll(" ","")}.png`
+    imgBig = await import(pathStr)
+  }catch(e){
+    console.log("error cargando imagen", e)
+  }
+  hito.imgBig = imgBig
 
   return {...hito,...hitos[idx]}
 }

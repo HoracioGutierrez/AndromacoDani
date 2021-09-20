@@ -10,6 +10,7 @@ import Side from './components/SideBar.js'
 import Textura from './components/Textura.js'
 import Circle from './components/Circle.js'
 import HitoOverlay from './components/Hito/HitoOverlay.js'
+import Navbar from './components/Navbar/Navbar'
 
 //context
 import OverlayContext from './OverlayContext.js'
@@ -45,8 +46,8 @@ function App() {
         setHitosData(hitos.filter(obj => Object.keys(obj).length !== 0))
         setHitosOverlayData(hitos
           .filter(obj => Object.keys(obj).length !== 0)
-          .map(({year, imgsBig, text})=> {
-            return {year,imgsBig,text}
+          .map(({year, imgBig, text})=> {
+            return {year,imgBig,text}
           }))
       }
     })()
@@ -94,13 +95,7 @@ function App() {
     onMouseMove={show ? () =>{} : move(false)}
     onWheel={show ? () =>{} : move(true)}
     >
-      <header>
-        <img id='logoMain' src={logoMain} alt="Logo de Andrómaco"/>
-        <div id='title'>
-          Descubrí <strong>nuestra historia</strong>
-        </div>
-        <img id='logoRight' src={logoRight} alt="Logo alternativo de Andrómaco"/>
-      </header>
+      <Navbar />
       <main>   
         {/* Container */}
         <Parallax horizontal={true} pages={1.4} ref={ref} id="para">
@@ -157,7 +152,7 @@ function App() {
         <OverlayContext.Provider value={{show,setShow, hitosOverlayData, hitosOverlayDataIdx, setHitosOverlayDataIdx}}>
           <HitoOverlay />
         </OverlayContext.Provider>
-        <ReactAudioPlayer loop controls autoPlay volume={0.5} muted={muted} src={music}/>
+        <ReactAudioPlayer loop controls autoPlay volume={0.1} muted={muted} src={music}/>
         <button 
           id="mute"
           onClick={_=> {

@@ -17,7 +17,7 @@ top:${props => props.pos.y};
 z-index:3;
 `
 
-function Hito({idx, pos,direction,imgSmall, imgsBig, year, title, text}) {
+function Hito({idx, pos,direction,imgSmall, year, title}) {
   const {setShow} = useContext(OverlayContext)
   const {setHitosOverlayDataIdx} = useContext(OverlayContext)
   const [hovered,setHovered] = useState(false)
