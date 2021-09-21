@@ -49,7 +49,7 @@ function App() {
           }))
       }
     })()
-  },[])
+  })
 
   const ref = useRef()
 
@@ -158,7 +158,7 @@ function App() {
             setManuallyMuted(true)
           }}
         >
-        <img className={`speaker ${muted ? 'muted' : ''}`} src={speaker}/>
+        <img alt="speaker, used to mute the music" className={`speaker ${muted ? 'muted' : ''}`} src={speaker}/>
         {/*muted ?  "🔇" : "🔈"*/}
         </button>
       </main>

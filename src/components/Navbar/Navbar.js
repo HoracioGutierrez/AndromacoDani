@@ -9,7 +9,6 @@ import {
 } from "./Navbar.elements";
 
 import { FaBars, FaTimes } from "react-icons/fa";
-import { IconContext } from "react-icons";
 
 import logo from '../../assets/img/logo-izq.png'
 import styled from "styled-components";

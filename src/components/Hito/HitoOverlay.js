@@ -27,23 +27,13 @@ background-color: #000000cc;
 color:white;
 z-index:100;
 
-.overlayInfo {
-  display:flex;
-  flex-direction:row;
-  height:60vh;
-  flex:40%;
-  width:90%;
-  margin:0 auto;
-  padding:40px 24px 40px 24px;
-}
-
 
 .banda {
   background-repeat:no-repeat;
   background-position:center;
   background-size:contain;
   flex:20%;
-  width:80%;
+  width:70%;
   margin:0 auto;
 }
 
@@ -59,14 +49,32 @@ z-index:100;
   background-image: url(${overlayFoot});
 }
 
-.overlayImage {
-  flex:40%;
-  padding-right:20px;
-  width:100%;
-  object-fit:scale-down;
+#overlayMain {
+  display:flex;
+  flex-direction:row;
+  height:60vh;
+  /*margin:0 auto;*/
+  /*padding:40px 24px 40px 24px;*/
 }
 
-.overlayText {
+#overlayContent {
+  display:flex;
+  flex:70%;
+  width:40%;
+  flex-direction:row;
+  justify-content:center;
+}
+
+
+#overlayImage {
+  flex:40%;
+  min-width:30vw;
+  object-fit:scale-down;
+  margin-right:0.5%;
+}
+
+#overlayText {
+  min-width:30vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -120,8 +128,6 @@ button.exit {
   border:none;
   position:fixed;
   right:40px;
-  font-size:3rem;
-  font-weight:light;
   top:3%;
   cursor:pointer;
   /*filter:drop-shadow(1px 1px 1px #00FFFF);*/
@@ -130,8 +136,63 @@ button.exit {
 button.arrow {
   background:none;
   border:none;
-  margin:60px;
   cursor:pointer; 
+  flex:10%;
+}
+
+
+@media screen and (max-width: 1024px) {
+ .banda {
+  display:none;
+ }
+
+ button.exit {
+  right:0;
+  top:24px;
+ }
+
+ button.exit img {
+  width:60%;
+ }
+
+ #overlayContent {
+  margin-top:15%;
+  flex-direction: column;
+  overflow: scroll;
+  justify-content:flex-start;
+  height: 100vh;
+ }
+
+ #overlayText h2 {
+  font-size:1.2rem;
+  margin:0;
+ }
+
+ #overlayText p {
+  font-size:1.0rem;
+  overflow-y:hidden;
+  margin-top:10px;
+  text-align:left;
+  width:100%;
+ }
+
+ button.arrow {
+  margin:0px;
+  align-self:flex-end;
+ }
+
+ button.arrow:focus {
+    outline: none;
+ }
+
+ button.arrow img {
+  width:30px;
+ }
+
+ button.arrow img:focus {
+    outline: none;
+ }
+
 }
 `
 
@@ -148,34 +209,36 @@ const HitoOverlay = () =>{
     <Overlay show={show}>
         <div className="banda head"></div>
         <div class="header">
-          <button className="exit" onClick={_=> {setShow(false)}}><img src={cross}/></button>
+          <button className="exit" onClick={_=> {setShow(false)}}><img alt="close the overlay" src={cross}/></button>
         </div>
-        <div className="overlayInfo">
-          <button className="arrow"  onClick={_=> {
-            const val = hitosOverlayDataIdx === 0 ? 0 : hitosOverlayDataIdx - 1 
-            setHitosOverlayDataIdx(val)
-          }}>
-          <img src={time_back}/>
-          </button>
+        <div id="overlayMain">
+        <button className="arrow"  onClick={_=> {
+          const val = hitosOverlayDataIdx === 0 ? 0 : hitosOverlayDataIdx - 1 
+          setHitosOverlayDataIdx(val)
+        }}>
+        <img src={time_back} alt="go back to last element of timeline" />
+        </button>
+        <div id="overlayContent">
           {noImgIdxs[hitosOverlayDataIdx]
-            ? <img className="overlayImage" src={imgBig} onError={_ => {
+            ? <img id="overlayImage" src={imgBig} alt="main overlay" onError={_ => {
               const arr = [...noImgIdxs]
               arr[hitosOverlayDataIdx] = false
               setNoImgIdxs(arr)
             }}  />
             : <></>}
-          <div className="overlayText">
+          <div id="overlayText">
             <h2>{year}</h2>
             <p>{text}</p>
           </div>
-          <button className="arrow" onClick={ _ => {
-            const val = hitosOverlayDataIdx > hitosOverlayData.length - 1
-              ? hitosOverlayDataIdx 
-              : hitosOverlayDataIdx + 1 
-            setHitosOverlayDataIdx(val)
-          }}>
-           <img src={time_next} />
-          </button>
+        </div>
+        <button className="arrow" onClick={ _ => {
+          const val = hitosOverlayDataIdx > hitosOverlayData.length - 1
+            ? hitosOverlayDataIdx 
+            : hitosOverlayDataIdx + 1 
+          setHitosOverlayDataIdx(val)
+        }}>
+         <img src={time_next} alt="go to the next element of the timeline"/>
+        </button>
         </div>
         <div className="banda foot"></div>
     </Overlay>

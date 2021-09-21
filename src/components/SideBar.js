@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import React, { useState, useEffect } from 'react';
+import easyScroll from 'easy-scroll'
 
 const yearRanges = ["1926-1935", "1936-1945", "1946-1955", "1956-1965", 
                     "1966-1975", "1976-1985", "1986-1995", "1996-2005",
@@ -23,6 +24,10 @@ top:15%;
 z-index:0;
 background-color: #ffffff5e;
 border-radius:10px;
+
+@media screen and (max-width: 1024px) {
+  display:none;
+}
 `
 const Y = styled.a`
 width:110px;
@@ -72,23 +77,39 @@ font-size:0.7vw;
 
 function Year({hitoIdx, year,scrollRoot}) {
   const [anchor,setAnchor] = useState(null)
-
   useEffect(() => {
-    setAnchor(document.getElementById(`hito_${hitoIdx}`))
+    // setAnchor(document.getElementById(`hito_${hitoIdx}`))
+    // if(anchor){
+    //   console.log('anchor', anchor)
+    // }
   })
 
   const handleClick = ev => {
     ev.preventDefault()
+    const a = document.getElementById(`hito_${hitoIdx}`)
     var headerOffset = 0
-    var elementPosition = anchor.getBoundingClientRect()
+    var elementPosition = a.getBoundingClientRect()
     var offsetPosition = elementPosition.top - headerOffset
-    console.log(anchor.id)
-    console.log(elementPosition)
+    let amount = elementPosition.left
+    const direction = amount > 0 ? "right" : "left"
+    amount = Math.abs(elementPosition.left)
+    const rootPos = document.getElementById('timelineContainer').getBoundingClientRect()
+    console.log('POS', amount)
+    console.log('DIR', direction)
+    easyScroll({
+      scrollableDomEle: scrollRoot,
+      direction: direction,
+      duration: 100,
+      easingPreset: 'easeInOutQuad',
+      scrollAmount:amount/2
+    });
+    /*
     scrollRoot.scrollTo({
       top:offsetPosition,
-      left:elementPosition.left,
+      left:pos,
       behavior:'smooth'
-    })
+    })\
+    */
   }
 
   return (
