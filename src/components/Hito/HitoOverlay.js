@@ -70,7 +70,7 @@ z-index:100;
   flex:40%;
   min-width:30vw;
   object-fit:scale-down;
-  margin-right:0.5%;
+  margin-right:2.5%;
 }
 
 #overlayText {
