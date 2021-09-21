@@ -206,7 +206,7 @@ const HitoOverlay = () =>{
   },[hitosOverlayData])
 
   return (
-    <Overlay show={show}>
+    <Overlay show={show} >
         <div className="banda head"></div>
         <div class="header">
           <button className="exit" onClick={_=> {setShow(false)}}><img alt="close the overlay" src={cross}/></button>

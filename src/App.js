@@ -37,6 +37,25 @@ function App() {
   const [muted,setMuted] = useState(true)
   const [manuallyMuted,setManuallyMuted] = useState(false)
 
+  const handleUp = e => {
+  }
+
+  const handleDown = e => {
+    if(show){
+      if(e.key === "Escape"){
+        setShow(false)
+      }
+
+      if(e.key === "ArrowRight"){
+        setHitosOverlayDataIdx(hitosOverlayDataIdx + 1)
+      }
+
+      if(e.key === "ArrowLeft"){
+        setHitosOverlayDataIdx(hitosOverlayDataIdx - 1)
+      }
+    }
+  }
+
   useEffect(() =>{
     (async function(){
       if(hitosData.length === 0 || hitosOverlayData.length === 0){
@@ -49,6 +68,12 @@ function App() {
           }))
       }
     })()
+    window.addEventListener("keyup", handleUp)
+    window.addEventListener("keydown", handleDown)
+    return () => {
+          window.removeEventListener("keyup", handleUp)
+          window.removeEventListener("keydown", handleDown)
+        }
   })
 
   const ref = useRef()
