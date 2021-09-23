@@ -103,7 +103,7 @@ function Year({hitoIdx, year,scrollRoot}) {
 
     scrollRoot.scrollBy({
       top:offsetPosition,
-      left:(amount - scrollRoot.getBoundingClientRect().left)/2, 
+      left:(amount - scrollRoot.getBoundingClientRect().left), 
       behavior:'smooth'
     })
 
