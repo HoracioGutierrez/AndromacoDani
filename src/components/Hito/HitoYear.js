@@ -6,8 +6,8 @@ const Year = styled.p`
   text-align:left;
   color:white;
   z-index:1;
-  left:-1%;
-  top:${props => props.direction === "up" ? "-2.0%" : "88%"};
+  left:${props => props.year.indexOf("-") === -1 ? "-1%" : "-24%"};
+  top:${props => props.direction === "up" ? "8.0%" : "80%"};
   ${props => props.direction === "up" && css`
     border-bottom:1px solid #00FFFF;
   `}
@@ -23,7 +23,7 @@ ${props => props.hovered && css`
   `} 
  `
 function HitoYear({year,hovered,direction}) {
-  return <Year hovered={hovered} direction={direction} >{year.split("-")[0]}</Year> 
+  return <Year hovered={hovered} direction={direction} year={year} >{year}</Year> 
 }
 
 export default HitoYear 

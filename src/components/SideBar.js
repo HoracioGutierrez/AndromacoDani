@@ -16,11 +16,11 @@ display:flex;
 flex-direction:row;
 align-items:center;
 justify-content:space-between;
-padding:10px;
+padding:4px;
 /*right:20px;*/
 left: 50%;
-transform: translateX(-50%);
-top:15%;
+transform: translateX(-50%) scale(0.95);
+top:100px;
 z-index:0;
 background-color: #ffffff5e;
 border-radius:10px;
@@ -31,13 +31,12 @@ border-radius:10px;
 `
 const Y = styled.a`
 width:110px;
-font-family:'Poppins';
+font-family:'Minion';
 text-align:center;
-/*padding-left:10px;*/
 text-decoration:none;
 underline:none;
 color:#093255;
-font-size:0.7vw;
+font-size:2pt!important;
 
 &:first-child{
   animation:glow 1s ease-in-out;
@@ -46,9 +45,6 @@ font-size:0.7vw;
   animation-play-state: running; 
 }
 
-&::before {
-  width:110px;
-}
 
 &:hover {
 /*
@@ -92,33 +88,29 @@ function Year({hitoIdx, year,scrollRoot}) {
     var offsetPosition = elementPosition.top - headerOffset
     let amount = elementPosition.left
     const direction = amount > 0 ? "right" : "left"
-    amount = Math.abs(elementPosition.left)
+    //amount = Math.abs(elementPosition.left)
     const rootPos = document.getElementById('timelineContainer').getBoundingClientRect()
-    console.log('POS', amount)
+    console.log('POS', amount - scrollRoot.getBoundingClientRect().left)
     console.log('DIR', direction)
-    easyScroll({
-      scrollableDomEle: scrollRoot,
-      direction: direction,
-      duration: 100,
-      easingPreset: 'easeInOutQuad',
-      scrollAmount:amount/2
-    });
-    /*
-    scrollRoot.scrollTo({
+
+    // easyScroll({
+    //   scrollableDomEle: scrollRoot,
+    //   direction: direction,
+    //   duration: 100,
+    //   easingPreset: 'easeInOutQuad',
+    //   scrollAmount:(amount - scrollRoot.getBoundingClientRect().left)/2
+    // });
+
+    scrollRoot.scrollBy({
       top:offsetPosition,
-      left:pos,
+      left:(amount - scrollRoot.getBoundingClientRect().left)/2, 
       behavior:'smooth'
-    })\
-    */
+    })
+
   }
 
   return (
-    <Y
-    onClick={handleClick}
-    href={``}
-    >
-    {year}
-    </Y>
+    <Y onClick={handleClick} href={``} > {year}</Y>
   )
 }
 

@@ -6,14 +6,17 @@ import overlayFoot from '../../assets/img/overlay_foot.png'
 import time_back from '../../assets/img/Time_Back.png'
 import time_next from '../../assets/img/Time_Next.png'
 import cross from '../../assets/img/Close.png'
+import font from '../../assets/font/MinionPro-Semibold.ttf'
 
 
+console.log(font)
 
 const Overlay = styled.div`
 
+
 @font-face{
   font-family:'Minion';
-  src:url(./assets/font/MinionPro.otf);
+  src:url(${font}) format('ttf');
 }
 display: ${props =>  props.show ? "flex" : "none"};
 overflow:hidden;
@@ -47,6 +50,7 @@ z-index:100;
 
 .foot {
   background-image: url(${overlayFoot});
+  width:100%;
 }
 
 #overlayMain {
@@ -90,7 +94,7 @@ h2 {
 }
 
 p {
-  overflow-y:scroll;
+  overflow-y:auto;
   /*margin:0 auto;*/
   padding-right:20px;
   text-align:left;
@@ -156,24 +160,34 @@ button.arrow {
  }
 
  #overlayContent {
-  margin-top:15%;
+  margin-top:5%;
   flex-direction: column;
-  overflow: scroll;
+  overflow: hidden;
   justify-content:flex-start;
-  height: 100vh;
+  height: 90vh;
  }
+
+ 
 
  #overlayText h2 {
   font-size:1.2rem;
   margin:0;
+  margin-top:24px;
  }
 
+ p::-webkit-scrollbar {
+    display:none;
+    width:0!important;
+  }
+  
  #overlayText p {
   font-size:1.0rem;
-  overflow-y:hidden;
   margin-top:10px;
   text-align:left;
   width:100%;
+  height:30vh;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
  }
 
  button.arrow {

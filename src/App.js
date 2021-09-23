@@ -1,4 +1,4 @@
-import {useRef,useState,useEffect} from 'react'
+import {useState,useEffect} from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import './App.css';
 
@@ -36,9 +36,7 @@ function App() {
   const [hitosData,setHitosData] = useState([])
   const [muted,setMuted] = useState(true)
   const [manuallyMuted,setManuallyMuted] = useState(false)
-
-  const handleUp = e => {
-  }
+  const [nPages,setNPages] = useState(9)
 
   const handleDown = e => {
     if(show){
@@ -68,15 +66,16 @@ function App() {
           }))
       }
     })()
-    window.addEventListener("keyup", handleUp)
-    window.addEventListener("keydown", handleDown)
-    return () => {
-          window.removeEventListener("keyup", handleUp)
-          window.removeEventListener("keydown", handleDown)
-        }
-  })
 
-  const ref = useRef()
+    if(window.innerWidth < 1024){
+      setNPages(2)
+    }
+
+    window.addEventListener("keydown", handleDown)
+    return () => window.removeEventListener("keydown", handleDown)
+
+  },[nPages])
+
 
   const scrollUp = ev => {
     if (ev.wheelDelta) {
@@ -91,22 +90,25 @@ function App() {
       if(muted && !manuallyMuted)setMuted(false)
     }
 
-    let dir = ""
-
-    if(ev.buttons === 1 && !wheel){
-      dir = -ev.movementX > 0 ? "right" : "left"
-    }else{
-      dir = scrollUp(ev) ? "left" : "right"
-    }
+    const dir = ev.buttons === 1 && !wheel 
+      ? -ev.movementX > 0 ? "right" : "left"
+      : scrollUp(ev) ? "left" : "right"
 
     if(ev.buttons === 1 || wheel){
-      easyScroll({
-        scrollableDomEle: document.querySelector('#para'),
-        direction: dir,
-        duration: 1000,
-        easingPreset: 'easeInOutQuad',
-        scrollAmount:200
-      });
+      const left = document
+        .getElementById('timelineContainer')
+        .getBoundingClientRect().left
+
+      // limits 
+      if(left > -2300 || left < -2300 && dir === "left"){
+        easyScroll({
+          scrollableDomEle: document.querySelector('#para'),
+          direction: dir,
+          duration: 1000,
+          easingPreset: 'easeInOutQuad',
+          scrollAmount:400
+        });
+      }
     }
 
   }
@@ -121,9 +123,9 @@ function App() {
       <Navbar />
       <main>   
         {/* Container */}
-        <Parallax horizontal={true} pages={1.4} ref={ref} id="para">
+        <Parallax  horizontal={true} pages={nPages}  id="para">
             {/* Timeline */}
-            <ParallaxLayer className="layerFront" speed={2} id="timelineContainer">
+            <ParallaxLayer className="layerFront" factor={0.9} speed={2} id="timelineContainer">
               {/* Hitos */}
               <div className="layerFront" id="hitos">
                 {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,year,title},idx) => {
@@ -147,7 +149,7 @@ function App() {
               <div id="grid"></div>
             </ParallaxLayer>
             {/* Stars */}
-            <ParallaxLayer className="layerBack" speed={0.00002}><Points/></ParallaxLayer>
+          <ParallaxLayer className="layerBack" speed={0.00000002}><Points/></ParallaxLayer>
             {/* Grid Blob */}
             <ParallaxLayer className="layerBack" style={{zIndex:0}} speed={0.002} offset={0.8} factor={0.5}>
               <Textura top={25}/>
@@ -162,13 +164,14 @@ function App() {
             <ParallaxLayer className="layerBack" style={{zIndex:0}} speed={0.002}  factor={0.3}>
                 <Circle x={20} y={-40}/>
             </ParallaxLayer>
-            <ParallaxLayer className="layerBack" style={{zIndex:0}} speed={0.002}  offset={1.2} factor={0.3}>
+            <ParallaxLayer className="layerBack" style={{zIndex:0}} speed={0.002}  offset={1.2} factor={0.8}>
                 <Circle x={-40} y={-30}/>
+                <Circle x={0} y={20}/>
             </ParallaxLayer>
         </Parallax>
         <Side />
         <div id="mouse">
-          <p>Arrastrá o scrolleá para conocer nuestra historía</p>
+          <p>Mover el cursor hacia derecha e izquierda para conocer nuestra historia</p>
           <img src={mouse} alt="Imagen de mouse para indicar navegación horizontal" />
         </div>
 

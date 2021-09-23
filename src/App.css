@@ -12,17 +12,18 @@
   src:url(./assets/font/Poppins-Regular.ttf);
 }
 
+
 body {
   min-height:100vh; 
   overflow:hidden;
   font-family:'Poppins';
-  font-size:16px;
+  font-size:12px;
 }
 
 .App {
   display:flex;
   flex-direction:column;
-  width: calc(var(--main-width)*1.1);
+  width: calc(var(--main-width)*2.0);
   height:100vh; 
   text-align: center;
   background:radial-gradient(var(--main-bg-2), var(--main-bg-1)); 
@@ -30,16 +31,18 @@ body {
 
 main {
   flex:8;
-  width: calc(var(--main-width)*1.1); 
+  width: calc(var(--main-width)*2.0); 
 }
 
 
 #timelineContainer{
-  margin-left:2.5%;
+  margin-left:0%;
   height:100%;
   display:flex;
   flex-direction:column;
   justify-content:center;
+  transform:translateY(-30px) scale(0.8)!important;
+  transform-origin:center;
 
 }
 
@@ -91,10 +94,12 @@ main {
   /* position:fixed; */
   position:absolute;
   z-index:-1;
-  width:100vw;
-  height:400px;
+  /*width:200vw;*/
+  width: calc(var(--main-width)*0.85);
+  height:440px;
   /* margin-top:-48px; */
-  margin-top:25vh;
+  margin-top:22vh;
+  /* margin-top:120px; */
   margin-left:100px;
   background-size:50px 50px;
   background-position:0px -10px;
@@ -102,6 +107,7 @@ main {
                     repeating-linear-gradient(90deg, transparent, transparent 49px, #ccc 49px, #ccc 100px); 
   opacity:0.2;
 }
+
 
 audio {
   display:none;
@@ -142,6 +148,10 @@ audio {
 
   #mouse {
     display:none;
+  }
+
+  #grid {
+    margin-top:8vh;
   }
 }
 

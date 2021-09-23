@@ -35,7 +35,9 @@ const Navbar = () => {
       <Container>
         <Wrapper>
 
-          <img className="logo" src={logo} alt="logo" />
+          <a activeClassName="item-active" href="https://andromaco95aniversario.com/agenda">
+           <img className="logo" src={logo} alt="logo" />
+          </a>
 
           <MobileMenuIcon onClick={() => handleShowMobileMenu()}>
             {showMobileMenu ? <FaTimes /> : <FaBars />}
