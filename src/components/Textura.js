@@ -5,6 +5,7 @@ const Textura = styled.div`
   height:100%;
   width:100vw;
   margin-top:${props => props.top}vh;
+  margin-left
   background-repeat: no-repeat;
   background-image:url(${tex});
   background-size:contain;

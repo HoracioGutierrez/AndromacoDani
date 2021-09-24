@@ -12,7 +12,7 @@ cursor:pointer;
 `
 
 const Image = styled.div`
-background-image:url(${props => props.src}), url(${overlayHead});
+background-image:url(${props => props.src});
 background-size:cover;
 width: 50%;
 padding-top: 50%;

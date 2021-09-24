@@ -161,6 +161,10 @@ function App() {
             <ParallaxLayer className="layerBack" style={{zIndex:0}} speed={0.2} offset={0.0} factor={0.05}>
                 <Circle x={1} y={48}/>
             </ParallaxLayer>
+            <ParallaxLayer className="layerBack" style={{zIndex:0}} speed={0.2} offset={0.0} factor={0.05}>
+                <Circle x={180} y={28}/>
+                <Textura />
+            </ParallaxLayer>
             <ParallaxLayer className="layerBack" style={{zIndex:0}} speed={0.002}  factor={0.3}>
                 <Circle x={20} y={-40}/>
             </ParallaxLayer>

@@ -1,6 +1,4 @@
 import styled from 'styled-components'
-import React, { useState, useEffect } from 'react';
-import easyScroll from 'easy-scroll'
 
 const yearRanges = ["1926-1935", "1936-1945", "1946-1955", "1956-1965", 
                     "1966-1975", "1976-1985", "1986-1995", "1996-2005",
@@ -31,12 +29,11 @@ border-radius:10px;
 `
 const Y = styled.a`
 width:110px;
-font-family:'Minion';
+font-family:'Poppins';
 text-align:center;
 text-decoration:none;
 underline:none;
 color:#093255;
-font-size:2pt!important;
 
 &:first-child{
   animation:glow 1s ease-in-out;
@@ -72,38 +69,19 @@ font-size:2pt!important;
 `
 
 function Year({hitoIdx, year,scrollRoot}) {
-  const [anchor,setAnchor] = useState(null)
-  useEffect(() => {
-    // setAnchor(document.getElementById(`hito_${hitoIdx}`))
-    // if(anchor){
-    //   console.log('anchor', anchor)
-    // }
-  })
-
   const handleClick = ev => {
     ev.preventDefault()
     const a = document.getElementById(`hito_${hitoIdx}`)
     var headerOffset = 0
     var elementPosition = a.getBoundingClientRect()
+    var rootPosition = scrollRoot.getBoundingClientRect()
     var offsetPosition = elementPosition.top - headerOffset
     let amount = elementPosition.left
-    const direction = amount > 0 ? "right" : "left"
-    //amount = Math.abs(elementPosition.left)
-    const rootPos = document.getElementById('timelineContainer').getBoundingClientRect()
-    console.log('POS', amount - scrollRoot.getBoundingClientRect().left)
-    console.log('DIR', direction)
-
-    // easyScroll({
-    //   scrollableDomEle: scrollRoot,
-    //   direction: direction,
-    //   duration: 100,
-    //   easingPreset: 'easeInOutQuad',
-    //   scrollAmount:(amount - scrollRoot.getBoundingClientRect().left)/2
-    // });
-
+    console.log(amount - rootPosition.left)
+    console.log(rootPosition)
     scrollRoot.scrollBy({
       top:offsetPosition,
-      left:(amount - scrollRoot.getBoundingClientRect().left), 
+      left:(amount - rootPosition.left) - (elementPosition.width*8), 
       behavior:'smooth'
     })
 

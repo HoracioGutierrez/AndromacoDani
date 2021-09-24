@@ -85,7 +85,7 @@ z-index:100;
   flex:40%;
   white-space:pre-line;
   margin-right:20px;
-  font-family:Minion;
+  font-family:'Minion';
 }
 
 h2 {
@@ -108,22 +108,21 @@ p {
 /* scrollbar */
 
 p::-webkit-scrollbar {
-width:8px;
-background-color:rgba(1,1,1,0.1);
+width:80px;
+color:red;
 }
 
 p::-webkit-scrollbar-thumb {
 width:8px;
-background-color:rgba(1,1,1,0.4);
 border-radius:10px;
 }
 
 p::-webkit-scrollbar-thumb:hover {
-background-color:rgba(1,1,1,0.6);
 }
 
 p::-webkit-scrollbar-track {
 border-radius:10px;
+color:red;
 }
 
 button.exit {
