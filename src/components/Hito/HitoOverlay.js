@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {useContext,useState,useEffect} from 'react'
+import {useContext,useState,useEffect, useRef} from 'react'
 import OverlayContext from '../.././OverlayContext.js'
 import overlayHead from '../../assets/img/overlay_head.png'
 import overlayFoot from '../../assets/img/overlay_foot.png'
@@ -8,8 +8,6 @@ import time_next from '../../assets/img/Time_Next.png'
 import cross from '../../assets/img/Close.png'
 import font from '../../assets/font/MinionPro-Semibold.ttf'
 
-
-console.log(font)
 
 const Overlay = styled.div`
 
@@ -158,10 +156,14 @@ button.arrow {
   width:60%;
  }
 
+  #overlayMain {
+    height:100vh;
+  }
+
  #overlayContent {
   margin-top:5%;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
   justify-content:flex-start;
   height: 90vh;
  }
@@ -174,24 +176,38 @@ button.arrow {
   margin-top:24px;
  }
 
- p::-webkit-scrollbar {
-    display:none;
-    width:0!important;
+ #overlayContent::-webkit-scrollbar {
+  border-radius:10px;
+  width:10px;
   }
+
+
+  #overlayContent::-webkit-scrollbar-thumb {
+    width:3px;
+    border-radius:10px;
+    background:#4f4f4f;
+  }
+
+  #overlayContent::-webkit-scrollbar-thumb:hover {
+  }
+
+#overlayContent::-webkit-scrollbar-track {
+border-radius:10px;
+background:#1f1f1f;
+}
   
  #overlayText p {
   font-size:1.0rem;
   margin-top:10px;
   text-align:left;
   width:100%;
-  height:30vh;
-  scrollbar-width:none;
-  -ms-overflow-style:none;
+  height:auto;
+  overflow:hidden;
  }
 
  button.arrow {
   margin:0px;
-  align-self:flex-end;
+  align-self:center;
  }
 
  button.arrow:focus {
@@ -213,10 +229,16 @@ const HitoOverlay = () =>{
   const {show,setShow, hitosOverlayDataIdx, setHitosOverlayDataIdx, hitosOverlayData} = useContext(OverlayContext)
   const {text,year,imgBig} = hitosOverlayData[hitosOverlayDataIdx] || {}
   const [noImgIdxs,setNoImgIdxs] = useState([])
+  const contentRef = useRef(null)
 
   useEffect(() =>{
     setNoImgIdxs(Array(hitosOverlayData.length).fill(true))
-  },[hitosOverlayData])
+
+    if(contentRef.current){
+      contentRef.current.scrollTo({top:0})
+    }
+
+  },[hitosOverlayData, hitosOverlayDataIdx])
 
   return (
     <Overlay show={show} >
@@ -229,9 +251,11 @@ const HitoOverlay = () =>{
           const val = hitosOverlayDataIdx === 0 ? 0 : hitosOverlayDataIdx - 1 
           setHitosOverlayDataIdx(val)
         }}>
-        <img src={time_back} alt="go back to last element of timeline" />
+        <img 
+          style={{display:hitosOverlayDataIdx === 0 ? 'none' : 'block'}}
+          src={time_back} alt="go back to last element of timeline" />
         </button>
-        <div id="overlayContent">
+        <div id="overlayContent" ref={contentRef}>
           {noImgIdxs[hitosOverlayDataIdx]
             ? <img id="overlayImage" src={imgBig} alt="main overlay" onError={_ => {
               const arr = [...noImgIdxs]
@@ -249,8 +273,10 @@ const HitoOverlay = () =>{
             ? hitosOverlayDataIdx 
             : hitosOverlayDataIdx + 1 
           setHitosOverlayDataIdx(val)
-        }}>
-         <img src={time_next} alt="go to the next element of the timeline"/>
+        }} >
+         <img 
+          style={{display:hitosOverlayDataIdx === 44 ? 'none' : 'block'}} 
+          src={time_next} alt="go to the next element of the timeline"/>
         </button>
         </div>
         <div className="banda foot"></div>
