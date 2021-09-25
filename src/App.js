@@ -37,19 +37,6 @@ function App() {
   const [muted,setMuted] = useState(true)
   const [manuallyMuted,setManuallyMuted] = useState(false)
   const [nPages,setNPages] = useState(9)
-  const [hideAnnoyingStuff,setHideAnnoyingStuff] = useState(false)
-
-
-
-  const handleResize = e => {
-    let zoom = Math.round(window.devicePixelRatio * 100);
-    console.log('e', e)
-    if(zoom >= 150){
-      setHideAnnoyingStuff(true)
-    }else{
-      setHideAnnoyingStuff(false)
-    }
-  }
 
   const handleDown = e => {
     if(show){
@@ -85,11 +72,7 @@ function App() {
     }
 
     window.addEventListener("keydown", handleDown)
-    window.addEventListener("resize", handleResize)
-    return () => {
-      window.removeEventListener("keydown", handleDown)
-      window.removeEventListener("resize", handleResize)
-    }
+    return () => window.removeEventListener("keydown", handleDown)
 
   },[nPages])
 
