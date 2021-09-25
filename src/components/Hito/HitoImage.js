@@ -24,7 +24,7 @@ border-radius: 50%;
 transition:all 0.3s ease-in;
 transition-property:transform,box-shadow;
 ${props => props.hovered && css`
-    transform:scale(1.3) translateY(${props.direction === "up" ? "-80%" : "70%"});
+    transform:scale(1.3) translateY(${props.direction === "up" ? "-50%" : "20%"});
     box-shadow:1px 1px 4px #00FFFF;
   `} 
 `

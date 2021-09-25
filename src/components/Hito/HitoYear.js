@@ -6,8 +6,8 @@ const Year = styled.p`
   text-align:left;
   color:white;
   z-index:1;
-  left:${props => props.year.indexOf("-") === -1 ? "-1%" : "-24%"};
-  top:${props => props.direction === "up" ? "8.0%" : "80%"};
+  left:${props => props.year.indexOf("-") === -1 ? "2%" : "-16%"};
+  top:${props => props.direction === "up" ? "20.0%" : "70%"};
   ${props => props.direction === "up" && css`
     border-bottom:1px solid #00FFFF;
   `}
