@@ -225,6 +225,7 @@ background:#1f1f1f;
  }
 
 }
+
 @media (max-height:480px) and (orientation: landscape) { 
   #overlayContent {
     height:70vh;

@@ -91,6 +91,7 @@ function App() {
 
     if(ev.buttons === 1){
       if(muted && !manuallyMuted)setMuted(false)
+      document.querySelector('audio').play()
     }
 
     const dir = ev.buttons === 1 && !wheel 
@@ -193,7 +194,7 @@ function App() {
         <OverlayContext.Provider value={{show,setShow, hitosOverlayData, hitosOverlayDataIdx, setHitosOverlayDataIdx}}>
           <HitoOverlay />
         </OverlayContext.Provider>
-        <ReactAudioPlayer loop controls autoPlay volume={0.1} muted={muted} src={music}/>
+        <ReactAudioPlayer loop controls autoPlay volume={0.1} muted={muted} src={music} type="audio/mp3" />
         <button 
           id="mute"
           onClick={_=> {
