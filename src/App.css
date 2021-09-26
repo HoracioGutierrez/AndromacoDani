@@ -34,6 +34,33 @@ main {
   width: calc(var(--main-width)*2.0); 
 }
 
+#loading {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-left:30%;
+}
+
+#loading p {
+  font-size:36px;
+  font-family:Poppins;
+  color:white;
+  text-align:center;
+  animation:loading 1.0s infinite;
+  animation-timing-function:ease-in-out;
+}
+
+@keyframes loading {
+  0%{
+    text-shadow:0px;
+  }
+  50% {
+    text-shadow:4px 2px 0px var(--main-bg-2) ;
+  }
+  100%{
+    text-shadow:0px;
+  }
+}
 
 #timelineContainer{
   margin-left:0%;
@@ -76,7 +103,7 @@ main {
   color:white;
   opacity:1.0;
   animation:hide 4s ease-in-out forwards;
-  animation-delay:2s;
+  animation-delay:6s;
 }
 
 @keyframes hide {
@@ -155,3 +182,14 @@ audio {
   }
 }
 
+@media (max-height:480px) and (orientation: landscape) { 
+   #timelineContainer {
+    transform:translateY(0px) scale(0.4)!important;
+   }
+
+  .App {
+    overflow:hidden;
+  }
+
+
+}

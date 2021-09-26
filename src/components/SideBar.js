@@ -73,17 +73,17 @@ function Year({hitoIdx, year,scrollRoot}) {
     ev.preventDefault()
     const a = document.getElementById(`hito_${hitoIdx}`)
     var headerOffset = 0
-    var elementPosition = a.getBoundingClientRect()
-    var rootPosition = scrollRoot.getBoundingClientRect()
-    var offsetPosition = elementPosition.top - headerOffset
-    let amount = elementPosition.left
-    console.log(amount - rootPosition.left)
-    console.log(rootPosition)
-    scrollRoot.scrollBy({
-      top:offsetPosition,
-      left:(amount - rootPosition.left) - (elementPosition.width*8), 
-      behavior:'smooth'
-    })
+    if(a) {
+      var elementPosition = a.getBoundingClientRect()
+      var rootPosition = scrollRoot.getBoundingClientRect()
+      var offsetPosition = elementPosition.top - headerOffset
+      let amount = elementPosition.left
+      scrollRoot.scrollBy({
+        top:offsetPosition,
+        left:(amount - rootPosition.left) - (elementPosition.width*6), 
+        behavior:'smooth'
+      })
+    }
 
   }
 

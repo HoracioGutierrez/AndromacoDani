@@ -18,6 +18,11 @@ position: sticky;
 width: 100vw;
 left:0;
 
+@media (max-height:1024px) and (orientation: landscape) { 
+   /*display:none;*/
+}
+
+
 }
 `
 
@@ -35,11 +40,11 @@ const Navbar = () => {
       <Container>
         <Wrapper>
 
-          <a activeClassName="item-active" href="https://andromaco95aniversario.com/agenda">
+          <a activeClassName="item-active" href="https://andromaco95aniversario.com/">
            <img className="logo" src={logo} alt="logo" />
           </a>
 
-          <MobileMenuIcon onClick={() => handleShowMobileMenu()}>
+         <MobileMenuIcon onClick={() => handleShowMobileMenu()}>
             {showMobileMenu ? <FaTimes /> : <FaBars />}
           </MobileMenuIcon>
 

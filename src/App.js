@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react'
 import ReactAudioPlayer from 'react-audio-player'
+import OnImagesLoaded from 'react-on-images-loaded';
 import './App.css';
 
 //components
@@ -37,6 +38,8 @@ function App() {
   const [muted,setMuted] = useState(true)
   const [manuallyMuted,setManuallyMuted] = useState(false)
   const [nPages,setNPages] = useState(9)
+  const [nLoadedImages, setNLoadedImages] = useState(0)
+  const [loadedImages,setLoadedImages] = useState(false)
 
   const handleDown = e => {
     if(show){
@@ -95,19 +98,22 @@ function App() {
       : scrollUp(ev) ? "left" : "right"
 
     if(ev.buttons === 1 || wheel){
-      const left = document
+      const container = document
         .getElementById('timelineContainer')
-        .getBoundingClientRect().left
 
-      // limits 
-      if(left > -2300 || left < -2300 && dir === "left"){
-        easyScroll({
-          scrollableDomEle: document.querySelector('#para'),
-          direction: dir,
-          duration: 1000,
-          easingPreset: 'easeInOutQuad',
-          scrollAmount:400
-        });
+      if(container){
+        let left = container.getBoundingClientRect().left
+
+        // limits 
+        if(left > -2300 || left < -2300 && dir === "left"){
+          easyScroll({
+            scrollableDomEle: document.querySelector('#para'),
+            direction: dir,
+            duration: 1000,
+            easingPreset: 'easeInOutQuad',
+            scrollAmount:400
+          });
+        }
       }
     }
 
@@ -116,9 +122,9 @@ function App() {
 
   return (
     <div 
-    className="App"
-    onMouseMove={show ? () =>{} : move(false)}
-    onWheel={show ? () =>{} : move(true)}
+      className="App"
+      onMouseMove={show ? () =>{} : move(false)}
+      onWheel={show ? () =>{} : move(true)}
     >
       <Navbar />
       <main>   
@@ -127,22 +133,27 @@ function App() {
             {/* Timeline */}
             <ParallaxLayer className="layerFront" factor={0.9} speed={2} id="timelineContainer">
               {/* Hitos */}
-              <div className="layerFront" id="hitos">
-                {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,year,title},idx) => {
-                  return ( <OverlayContext.Provider value={{show,setShow, setHitosOverlayData, setHitosOverlayDataIdx}}>
-                          <Hito 
-                            key={idx} 
-                            idx={idx}
-                            pos={pos} 
-                            direction={direction} 
-                            imgSmall={imgSmall} 
-                            year={year} 
-                            title={title} 
-                            />
-                            </OverlayContext.Provider>)}) : <></>}
-              </div>
+              <OnImagesLoaded
+                onLoaded={_=> setTimeout(() => setLoadedImages(true), 5000)}>
+                <div style={{display: loadedImages ? 'block' : 'none'}} 
+                  className="layerFront" id="hitos">
+                  {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,year,title},idx) => {
+                    return ( <OverlayContext.Provider 
+                                value={{show,setShow, setHitosOverlayData, setHitosOverlayDataIdx}}>
+                            <Hito 
+                              key={idx} 
+                              idx={idx}
+                              pos={pos} 
+                              direction={direction} 
+                              imgSmall={imgSmall} 
+                              year={year} 
+                              title={title} 
+                              />
+                              </OverlayContext.Provider>)}) : <></>}
+                </div>
+              </OnImagesLoaded>
               {/* Svg */}
-              <SvgTimeline/>
+              {loadedImages ?  <SvgTimeline/> : <div id="loading"> <p>Cargando línea de tiempo...</p></div>}
             </ParallaxLayer>
             {/* Grid */}
             <ParallaxLayer style={{zIndex:0}}speed={0.002} factor={0.0005}>

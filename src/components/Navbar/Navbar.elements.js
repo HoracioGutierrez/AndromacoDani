@@ -4,6 +4,10 @@ export const MiniNav = styled.div`
   width: 100%;
   height: 30px;
  background-color: #535552;
+
+  @media (max-height:480px) and (orientation: landscape) { 
+  display:none;
+  }
 `;
 
 export const Container = styled.div`
@@ -16,6 +20,22 @@ export const Container = styled.div`
   background: -webkit-linear-gradient(90deg, #0093d1 50%, #0067AC 100%);
   background: linear-gradient(90deg, #0093d1 50%, #0067AC 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0093d1",endColorstr="#0067ac",GradientType=1);
+
+  @media (max-height:480px) and (orientation: landscape) { 
+    background:transparent!important;
+    position:absolute;
+    left:0;
+    top:0;
+    transform-origin:center;
+    transform:scale(0.7) translate(-22%,-20%);
+
+    img {
+      opacity:0.2;
+      z-index:80;
+    }
+
+  }
+
 `;
 
 export const Wrapper = styled.div`
@@ -29,6 +49,7 @@ export const Wrapper = styled.div`
     height:50px;
     margin-left:20px;
   }
+
 `;
 
 export const IconContainer = styled.div`
@@ -72,6 +93,7 @@ width:100%;
     z-index: 999;
     flex-wrap: nowrap;
   }
+
 `;
 
 export const MenuItem = styled.li`
@@ -113,6 +135,8 @@ export const MenuItem = styled.li`
     width: 100%;
     height: 70px;
   }
+
+
 `;
 
 
@@ -146,4 +170,9 @@ export const MobileMenuIcon = styled.div`
       }
     }
   }
+
+  @media (max-height:480px) and (orientation: landscape) { 
+    display:none;
+  }
+
 `;

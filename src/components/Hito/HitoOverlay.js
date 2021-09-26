@@ -106,21 +106,23 @@ p {
 /* scrollbar */
 
 p::-webkit-scrollbar {
-width:80px;
-color:red;
+  width:10px;
+  border-radius:10px;
 }
 
 p::-webkit-scrollbar-thumb {
-width:8px;
-border-radius:10px;
+  width:3px;
+  border-radius:10px;
+  background:#4f4f4f;
 }
 
 p::-webkit-scrollbar-thumb:hover {
 }
 
 p::-webkit-scrollbar-track {
+
 border-radius:10px;
-color:red;
+background:#1f1f1f;
 }
 
 button.exit {
@@ -223,6 +225,12 @@ background:#1f1f1f;
  }
 
 }
+@media (max-height:480px) and (orientation: landscape) { 
+  #overlayContent {
+    height:70vh;
+  }
+}
+
 `
 
 const HitoOverlay = () =>{
