@@ -135,7 +135,7 @@ function App() {
             <ParallaxLayer className="layerFront" factor={0.9} speed={2} id="timelineContainer">
               {/* Hitos */}
               <OnImagesLoaded
-                onLoaded={_=> setTimeout(() => setLoadedImages(true), 5000)}>
+                onLoaded={_=> setTimeout(() => setLoadedImages(true), 10000)}>
                 <div style={{display: loadedImages ? 'block' : 'none'}} 
                   className="layerFront" id="hitos">
                   {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,year,title},idx) => {
