@@ -6,6 +6,8 @@ const OverlayContext = createContext({
   hitosOverlayData: {title:"", text:"", imgs: []},
   setHitosOverlayData: (hitosOverlayData) =>{},
   hitosOverlayDataIdx: 0,
-  setHitosOverlayDataIdx: (hitosOverlayDataIdx) => {}
+  setHitosOverlayDataIdx: (hitosOverlayDataIdx) => {},
+  nLoadedImages: 0,
+  setNLoadedImages: (nLoadedImages) => {}
 })
 export default OverlayContext; 

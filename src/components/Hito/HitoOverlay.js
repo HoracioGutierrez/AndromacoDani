@@ -131,10 +131,15 @@ button.exit {
   border:none;
   position:fixed;
   right:40px;
-  top:3%;
+  top:8%;
   cursor:pointer;
   /*filter:drop-shadow(1px 1px 1px #00FFFF);*/
 }
+
+button.exit img {
+  width:24px;
+}
+
 
 button.arrow {
   background:none;
@@ -239,12 +244,17 @@ const HitoOverlay = () =>{
   const {text,year,imgBig} = hitosOverlayData[hitosOverlayDataIdx] || {}
   const [noImgIdxs,setNoImgIdxs] = useState([])
   const contentRef = useRef(null)
+  const textRef = useRef(null)
 
   useEffect(() =>{
     setNoImgIdxs(Array(hitosOverlayData.length).fill(true))
 
     if(contentRef.current){
       contentRef.current.scrollTo({top:0})
+    }
+
+    if(textRef.current){
+      textRef.current.scrollTo({top:0})
     }
 
   },[hitosOverlayData, hitosOverlayDataIdx])
@@ -272,9 +282,9 @@ const HitoOverlay = () =>{
               setNoImgIdxs(arr)
             }}  />
             : <></>}
-          <div id="overlayText">
+          <div id="overlayText" >
             <h2>{year}</h2>
-            <p>{text}</p>
+            <p ref={textRef}>{text}</p>
           </div>
         </div>
         <button className="arrow" onClick={ _ => {

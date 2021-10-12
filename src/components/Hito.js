@@ -20,6 +20,7 @@ function Hito({idx, pos,direction,imgSmall, year, title}) {
   const {setShow} = useContext(OverlayContext)
   const {setHitosOverlayDataIdx} = useContext(OverlayContext)
   const [hovered,setHovered] = useState(false)
+
   pos = pos || {x: 0, y:0}
 
   return (

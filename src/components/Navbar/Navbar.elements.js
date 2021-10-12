@@ -134,6 +134,8 @@ export const MenuItem = styled.li`
   @media screen and (max-width: 1024px) {
     width: 100%;
     height: 70px;
+    position:absolute;
+    z-index:999;
   }
 
 

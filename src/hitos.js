@@ -18,11 +18,19 @@ const hitos = [
   },
   {
     pos: {
-      x: "250px",
+      x: "200px",
       y: "44%"
     },
     "direction": "down",
   },
+  {
+    pos: {
+      x: "290px",
+      y: "40%"
+    },
+    "direction": "down",
+  }
+  ,
   {
     pos: {
       x: "330px",
@@ -313,6 +321,7 @@ const addPos = async (hito,idx) =>{
 
 const genObj = async () =>{
   const csv = await fetchCSV()
+  console.log(csv)
   return await Promise.all(csv.map(addPos))
 }
 

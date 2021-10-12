@@ -1,6 +1,5 @@
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useCallback} from 'react'
 import ReactAudioPlayer from 'react-audio-player'
-import OnImagesLoaded from 'react-on-images-loaded';
 import './App.css';
 
 //components
@@ -39,9 +38,8 @@ function App() {
   const [manuallyMuted,setManuallyMuted] = useState(false)
   const [nPages,setNPages] = useState(9)
   const [nLoadedImages, setNLoadedImages] = useState(0)
-  const [loadedImages,setLoadedImages] = useState(false)
 
-  const handleDown = e => {
+  const handleDown = useCallback(e => {
     if(show){
       if(e.key === "Escape"){
         setShow(false)
@@ -55,7 +53,8 @@ function App() {
         setHitosOverlayDataIdx(hitosOverlayDataIdx - 1)
       }
     }
-  }
+  },[hitosOverlayDataIdx,show])
+
 
   useEffect(() =>{
     (async function(){
@@ -77,7 +76,7 @@ function App() {
     window.addEventListener("keydown", handleDown)
     return () => window.removeEventListener("keydown", handleDown)
 
-  },[nPages])
+  },[nPages,hitosOverlayData,hitosData,handleDown])
 
 
   const scrollUp = ev => {
@@ -106,7 +105,7 @@ function App() {
         let left = container.getBoundingClientRect().left
 
         // limits 
-        if(left > -2300 || left < -2300 && dir === "left"){
+        if(left > -2300 || (left < -2300 && dir === "left")){
           easyScroll({
             scrollableDomEle: document.querySelector('#para'),
             direction: dir,
@@ -134,27 +133,24 @@ function App() {
             {/* Timeline */}
             <ParallaxLayer className="layerFront" factor={0.9} speed={2} id="timelineContainer">
               {/* Hitos */}
-              <OnImagesLoaded
-                onLoaded={_=> setTimeout(() => setLoadedImages(true), 10000)}>
-                <div style={{display: loadedImages ? 'block' : 'none'}} 
-                  className="layerFront" id="hitos">
-                  {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,year,title},idx) => {
-                    return ( <OverlayContext.Provider 
-                                value={{show,setShow, setHitosOverlayData, setHitosOverlayDataIdx}}>
-                            <Hito 
-                              key={idx} 
-                              idx={idx}
-                              pos={pos} 
-                              direction={direction} 
-                              imgSmall={imgSmall} 
-                              year={year} 
-                              title={title} 
-                              />
-                              </OverlayContext.Provider>)}) : <></>}
-                </div>
-              </OnImagesLoaded>
-              {/* Svg */}
-              {loadedImages ?  <SvgTimeline/> : <div id="loading"> <p>Cargando línea de tiempo...</p></div>}
+              <div style={{display: nLoadedImages > 44 ? 'block' : 'none'}} 
+                className="layerFront" id="hitos">
+                {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,year,title},idx) => {
+                  return ( <OverlayContext.Provider 
+                              value={{show,setShow, setHitosOverlayData, setHitosOverlayDataIdx, setNLoadedImages, nLoadedImages}}>
+                          <Hito 
+                            key={idx} 
+                            idx={idx}
+                            pos={pos} 
+                            direction={direction} 
+                            imgSmall={imgSmall} 
+                            year={year} 
+                            title={title} 
+                            />
+                            </OverlayContext.Provider>)}) : <></>}
+              </div>
+            {/* Svg */}
+            {nLoadedImages > 44 ?  <SvgTimeline/> : <div id="loading"> <p>cargando...</p></div>}
             </ParallaxLayer>
             {/* Grid */}
             <ParallaxLayer style={{zIndex:0}}speed={0.002} factor={0.0005}>

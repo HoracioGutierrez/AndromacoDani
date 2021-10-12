@@ -39,6 +39,7 @@ main {
   justify-content:center;
   align-items:center;
   margin-left:30%;
+  text-transform:uppercase;
 }
 
 #loading p {
@@ -180,16 +181,25 @@ audio {
   #grid {
     margin-top:8vh;
   }
+
+  .speaker {
+    display:none;
+  }
 }
 
 @media (max-height:480px) and (orientation: landscape) { 
    #timelineContainer {
-    transform:translateY(0px) scale(0.4)!important;
+    transform:translateY(24px) scale(0.5)!important;
    }
 
   .App {
     overflow:hidden;
   }
+
+  .speaker {
+    display:none;
+  }
+
 
 
 }
