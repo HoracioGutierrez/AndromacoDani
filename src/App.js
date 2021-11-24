@@ -137,7 +137,7 @@ function App() {
                 className="layerFront" id="hitos">
                 {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,year,title},idx) => {
                   return ( <OverlayContext.Provider 
-                              value={{show,setShow, setHitosOverlayData, setHitosOverlayDataIdx, setNLoadedImages, nLoadedImages}}>
+                              value={{show,setShow, setHitosOverlayData, setHitosOverlayDataIdx, setNLoadedImages, nLoadedImages}} key={idx} >
                           <Hito 
                             key={idx} 
                             idx={idx}

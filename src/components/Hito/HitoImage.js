@@ -37,7 +37,8 @@ function HitoImage({src, hovered,direction, setShow,idx,setHitosOverlayDataIdx})
           setNLoadedImages(nLoadedImages + 1)
           setLoaded(true)
       }
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  //el comentario arriba de este es para desabilitar la regla "eslint" que tiraba un warning
 
   return (
     <ImageWrap 

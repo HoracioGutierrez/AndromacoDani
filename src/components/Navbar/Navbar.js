@@ -57,7 +57,7 @@ const Navbar = () => {
       <Container>
         <Wrapper>
 
-          <a activeClassName="item-active" href="https://andromaco95aniversario.com/">
+          <a activeclassname="item-active" href="https://andromaco95aniversario.com/">
            <img className="logo" src={logo} alt="logo" />
           </a>
         {/*
@@ -65,7 +65,7 @@ const Navbar = () => {
             {showMobileMenu ? <FaTimes /> : <FaBars />}
           </MobileMenuIcon>
           */}
-          <a className="volver" activeClassName="item-active" href="https://andromaco95aniversario.com/agenda">Volver</a>
+          <a className="volver" activeclassname="item-active" href="https://andromaco95aniversario.com/agenda">Volver</a>
 
           <Menu showMobileMenu={showMobileMenu}>
             <MenuItem onClick={() => handleShowMobileMenu()}>
