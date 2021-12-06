@@ -310,7 +310,7 @@ const fetchCSV =  async () => {
   const reader = res.body.getReader()
   const data = await reader.read()
   const csvString = decoder.decode(data.value)
-  return Papa.parse(csvString, {header:true, delimiter:","}).data
+  return Papa.parse(csvString, {header:true, delimiter:",",skipEmptyLines:true}).data
 }
 
 const addPos = async (hito,idx) =>{
