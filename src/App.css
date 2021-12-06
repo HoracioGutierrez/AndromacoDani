@@ -38,7 +38,7 @@ main {
   display:flex;
   justify-content:center;
   align-items:center;
-  margin-left:30%;
+  margin-left:15%;
   text-transform:uppercase;
 }
 
@@ -95,8 +95,9 @@ main {
   flex-direction:column;
   position:fixed;
   height:10vh;
-  left:40%;
+  left:50%;
   bottom:7vh;
+  transform:translateX(-50%);
 }
 
 #mouse p {
@@ -202,4 +203,9 @@ audio {
 
 
 
+}
+
+
+#para {
+  overflow: hidden!important;
 }
