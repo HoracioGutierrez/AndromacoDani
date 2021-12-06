@@ -321,7 +321,6 @@ const addPos = async (hito,idx) =>{
 
 const genObj = async () =>{
   const csv = await fetchCSV()
-  console.log(csv)
   return await Promise.all(csv.map(addPos))
 }
 

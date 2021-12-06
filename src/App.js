@@ -126,7 +126,7 @@ function App() {
       onMouseMove={show ? () =>{} : move(false)}
       onWheel={show ? () =>{} : move(true)}
     >
-      <Navbar />
+      {/* <Navbar /> */}
       <main>   
         {/* Container */}
         <Parallax  horizontal={true} pages={nPages}  id="para">
