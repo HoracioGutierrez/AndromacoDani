@@ -119,7 +119,6 @@ function App() {
 
   }
 
-
   return (
     <div 
       className="App"
@@ -133,7 +132,7 @@ function App() {
             {/* Timeline */}
             <ParallaxLayer className="layerFront" factor={0.9} speed={2} id="timelineContainer">
               {/* Hitos */}
-              <div style={{display: nLoadedImages > 43 ? 'block' : 'none'}} 
+              <div style={{display: nLoadedImages === hitosData.length - 1 ? 'block' : 'none'}} 
                 className="layerFront" id="hitos">
                 {hitosData.length !== 0 ? hitosData.map(({pos,direction,imgSmall,year,title},idx) => {
                   return ( <OverlayContext.Provider 
@@ -150,7 +149,7 @@ function App() {
                             </OverlayContext.Provider>)}) : <></>}
               </div>
             {/* Svg */}
-            {nLoadedImages > 43 ?  <SvgTimeline/> : <div id="loading"> <p>cargando...</p></div>}
+            {nLoadedImages === hitosData.length - 1 ?  <SvgTimeline/> : <div id="loading"> <p>cargando...</p></div>}
             </ParallaxLayer>
             {/* Grid */}
             <ParallaxLayer style={{zIndex:0}}speed={0.002} factor={0.0005}>
